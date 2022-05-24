@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,7 +58,7 @@
 	<!-- AdminLTE App -->
 	<script src="vistas/js/adminlte.js"></script>
 	<!-- AdminLTE for demo purposes -->
-	<script src="vistas/js/demo.js"></script>
+	<!-- <script src="vistas/js/demo.js"></script> -->
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="vistas/js/pages/dashboard.js"></script>
 
@@ -74,7 +74,37 @@
 		=            Páginas del sitio                =
 		=============================================*/
 		
-		include "paginas/inicio.php";
+		if (isset($_GET["pagina"])) {
+			if ($_GET["pagina"] == "inicio" || 
+				$_GET["pagina"] == "perfil" || 
+				$_GET["pagina"] == "usuarios" ||
+				$_GET["pagina"] == "uninivel" || 
+				$_GET["pagina"] == "binaria" || 
+				$_GET["pagina"] == "matriz" || 
+				$_GET["pagina"] == "ingresos-uninivel" || 
+				$_GET["pagina"] == "ingresos-binaria" || 
+				$_GET["pagina"] == "ingresos-matriz" || 
+				$_GET["pagina"] == "plan-compensacion" || 
+				$_GET["pagina"] == "soporte" || 
+				$_GET["pagina"] == "salir") {
+
+				include "paginas/".$_GET["pagina"].".php";
+
+			}else if ($_GET["pagina"] == "cuerpo-activo" || 
+				$_GET["pagina"] == "mente-sana" || 
+				$_GET["pagina"] == "espiritu-libre") {
+
+				include "paginas/academia.php";
+
+			}else{
+
+				include "paginas/error404.php";
+				
+			}
+		}else{
+			include "paginas/inicio.php";
+		}
+		
 		
 		/*=====  End of Páginas del sitio      ======*/
 		
