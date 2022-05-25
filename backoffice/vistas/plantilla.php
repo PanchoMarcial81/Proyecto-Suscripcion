@@ -25,7 +25,10 @@
 	<link rel="stylesheet" href="vistas/plugins/daterangepicker/daterangepicker.css">
 	<!-- summernote -->
 	<link rel="stylesheet" href="vistas/plugins/summernote/summernote-bs4.min.css">
-
+	<!-- jdSlinder -->
+	<link rel="stylesheet" href="vistas/css/jdSlider.css">
+	<!-- CSS Personal -->
+	<link rel="stylesheet" href="vistas/css/style.css">
 
 	<!-- jQuery -->
 	<script src="vistas/plugins/jquery/jquery.min.js"></script>
@@ -61,6 +64,8 @@
 	<!-- <script src="vistas/js/demo.js"></script> -->
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="vistas/js/pages/dashboard.js"></script>
+	<!-- jdSlinder -->
+	<script src="vistas/js/jdSlider.js"></script>
 
 </head>
 <body class="sidebar-mini sidebar-collapse sidebar-closed" style="height: auto;">
@@ -118,5 +123,7 @@
 	<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+<script src="vistas/js/inicio.js"></script>
 </body>
 </html>

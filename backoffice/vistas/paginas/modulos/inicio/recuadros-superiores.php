@@ -16,7 +16,7 @@
 	<!-- ./col -->
 	<div class="col-12 col-sm-6 col-lg-3">
 		<!-- small box -->
-		<div class="small-box bg-success">
+		<div class="small-box bg-purple">
 			<div class="inner">
 				<h3>53<sup style="font-size: 20px"></sup></h3>
 
@@ -31,7 +31,7 @@
 	<!-- ./col -->
 	<div class="col-12 col-sm-6 col-lg-3">
 		<!-- small box -->
-		<div class="small-box bg-warning">
+		<div class="small-box bg-primary">
 			<div class="inner">
 				<h3>4</h3>
 
@@ -46,9 +46,9 @@
 	<!-- ./col -->
 	<div class="col-12 col-sm-6 col-lg-3">
 		<!-- small box -->
-		<div class="small-box bg-danger">
+		<div class="small-box bg-dark">
 			<div class="inner">
-				<h3 class="text-secondary">Activo</h3>
+				<h3>Activo</h3>
 
 				<p>Renovación 2022-09-17</p>
 			</div>
