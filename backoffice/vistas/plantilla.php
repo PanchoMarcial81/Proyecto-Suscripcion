@@ -125,5 +125,6 @@
 <!-- ./wrapper -->
 
 <script src="vistas/js/inicio.js"></script>
+<script src="vistas/js/usuarios.js"></script>
 </body>
 </html>
