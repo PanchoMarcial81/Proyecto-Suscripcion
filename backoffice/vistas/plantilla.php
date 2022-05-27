@@ -27,6 +27,8 @@
 	<link rel="stylesheet" href="vistas/plugins/summernote/summernote-bs4.min.css">
 	<!-- jdSlinder -->
 	<link rel="stylesheet" href="vistas/css/jdSlider.css">
+	<!-- Select2 -->
+  	<link rel="stylesheet" href="vistas/plugins/select2/css/select2.min.css">
 	<!-- CSS Personal -->
 	<link rel="stylesheet" href="vistas/css/style.css">
 
@@ -58,6 +60,9 @@
 	<script src="vistas/plugins/summernote/summernote-bs4.min.js"></script>
 	<!-- overlayScrollbars -->
 	<script src="vistas/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+	<!-- InputMask -->
+	<script src="vistas/plugins/moment/moment.min.js"></script>
+	<script src="vistas/plugins/inputmask/jquery.inputmask.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="vistas/js/adminlte.js"></script>
 	<!-- AdminLTE for demo purposes -->
@@ -66,6 +71,9 @@
 	<script src="vistas/js/pages/dashboard.js"></script>
 	<!-- jdSlinder -->
 	<script src="vistas/js/jdSlider.js"></script>
+	<!-- Select2 -->
+	<script src="vistas/plugins/select2/js/select2.full.min.js"></script>
+	
 
 </head>
 <body class="sidebar-mini sidebar-collapse sidebar-closed" style="height: auto;">

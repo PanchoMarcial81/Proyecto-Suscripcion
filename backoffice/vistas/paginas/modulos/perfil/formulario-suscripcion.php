@@ -45,7 +45,7 @@
 			<div class="form-group">
 				<label for="inputPais" class="control-label">País</label>
 				<div>
-					<select id="inputPais" class="form-control">
+					<select id="inputPais" class="form-control select2">
 						<option value="">Seleccione su país</option>
 					</select>
 				</div>
@@ -55,9 +55,9 @@
 				<label for="inputMovil" class="control-label">Teléfono Móvil</label>
 				<div class="input-group">
 					<div class="input-group-prepend">
-						<span class="p-2 bg-info rounded-left dialCode">+56 9</span>
+						<span class="p-2 bg-info rounded-left dialCode"></span>
 					</div>
-					<input type="text" class="form-control" id="inputMovil">
+					<input type="text" class="form-control" id="inputMovil" data-inputmask="'mask': '9 9999 9999'" data-mask>
 				</div>
 			</div>
 
