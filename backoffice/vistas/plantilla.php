@@ -73,7 +73,9 @@
 	<script src="vistas/js/jdSlider.js"></script>
 	<!-- Select2 -->
 	<script src="vistas/plugins/select2/js/select2.full.min.js"></script>
-	
+	<!-- jSignature -->
+	<script src="vistas/js/jSignature.js"></script>
+	<script src="vistas/js/jSignature.CompressorSVG.js"></script>
 
 </head>
 <body class="sidebar-mini sidebar-collapse sidebar-closed" style="height: auto;">

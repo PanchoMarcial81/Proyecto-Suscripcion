@@ -60,3 +60,33 @@
 .slide-area li a figure.desactivado img{
 	opacity: 0.5;
 }
+
+/* Formulario suscripcion */
+input[type="checkbox"]{
+	display: none;
+}
+
+label[for="aceptarTerminos"] span{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: #e9ecef;
+	vertical-align: middle;
+	border-radius:  100%;
+	margin-right: 5px;
+	border: 1px solid #aaa;
+	cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label[for="aceptarTerminos"] span{
+	background: url(../img/plantilla/check.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border:  1px solid #fff;
+}
+
+#signatureparent{
+	width:  300px;
+	border-bottom: 2px solid #333;
+}
