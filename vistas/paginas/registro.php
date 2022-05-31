@@ -9,7 +9,9 @@
 				
 					<a href="<?php echo $ruta; ?>inicio"><img src="img/logo-positivo.png" class="img-fluid px-5"></a>
 
-					<form class="mt-3 px-4">
+					<form class="mt-3 px-4" method="POST">
+
+						<input type="hidden" value="academy-of-life" name="patrocinador">
 
 						<div class="d-flex justify-content-between">
 						
@@ -33,21 +35,26 @@
 
 						<p class="text-center py-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi sunt officia unde officiis</p>
 
-						<input type="text" class="form-control my-3 py-3" placeholder="Nombre">
+						<input type="text" class="form-control my-3 py-3" name="registroNombre" placeholder="Nombre" required>
 
-						<input type="email" class="form-control my-3 py-3" placeholder="Correo Electrónico">
+						<input type="email" class="form-control my-3 py-3" name="registroEmail" placeholder="Correo Electrónico" required>
 
-						<input type="password" class="form-control my-3 py-3" placeholder="Contraseña">
+						<input type="password" class="form-control my-3 py-3" name="registroPassword" placeholder="Contraseña" required>
 
 						<div class="form-check-inline text-right">
 							
 							<input type="checkbox" id="politicas" class="form-check-input">
 
-								<label class="form-check-label" for="politicas">
-							Para registrarse debe aceptar nuestras políticas de privacidad<span></span>
+							<label class="form-check-label" for="politicas">
+								Para registrarse debe aceptar nuestras políticas de privacidad<span></span>
 							</label>
 
 						</div>
+
+						<?php
+							$registro = new ControladorUsuarios();
+							$registro->ctrRegistroUsuario();
+						?>
 
 						<input type="submit" class="form-control my-3 py-3 btn btn-info" value="Registrarse">
 
