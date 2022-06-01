@@ -54,6 +54,9 @@ $ruta = ControladorRuta::ctrRuta();
 	<!-- https://www.jqueryscript.net/loading/Handle-Loading-Progress-jQuery-Nite-Preloader.html -->
 	<script src="js/plugins/jquery.nite.preloader.js"></script>
 
+	<!-- SWEET ALERT 2 -->
+	<script src="js/plugins/sweetalert2.all.js"></script>
+
 </head>
 
 <body>
@@ -69,6 +72,8 @@ if (isset($_GET["pagina"])) {
 }
 	
 ?>
+
+<input type="hidden" value="<?php echo $ruta; ?>" id="ruta">
 
 <script src="js/script.js"></script>
 

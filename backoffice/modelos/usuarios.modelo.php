@@ -19,7 +19,7 @@ class ModeloUsuarios{
 		$stmt->bindParam(':email_encriptado', $datos['email_encriptado'], PDO::PARAM_STR);
 		$stmt->bindParam(':patrocinador', $datos['patrocinador'], PDO::PARAM_STR);
 	
-		if($stmt->execute()){
+		if( $stmt->execute() ){
 
 			return "ok";
 
@@ -31,4 +31,19 @@ class ModeloUsuarios{
 		$stmt->close();
 		$stmt = null;
 	}
+
+	/*=============================================
+	MOSTRAR USUARIOS
+	=============================================*/
+	static public function mdlMostrarUsuarios($tabla, $item, $valor){
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+		$stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+		$stmt->execute();
+
+		return $stmt->fetch();
+
+		$stmt->close();
+		$stmt = null;
+	}
+	
 }

@@ -9,7 +9,7 @@
 				
 					<a href="<?php echo $ruta; ?>inicio"><img src="img/logo-positivo.png" class="img-fluid px-5"></a>
 
-					<form class="mt-3 px-4" method="POST">
+					<form class="mt-3 px-4" method="POST" onsubmit="return validarPoliticas()">
 
 						<input type="hidden" value="academy-of-life" name="patrocinador">
 
@@ -46,7 +46,7 @@
 							<input type="checkbox" id="politicas" class="form-check-input">
 
 							<label class="form-check-label" for="politicas">
-								Para registrarse debe aceptar nuestras políticas de privacidad<span></span>
+								Para registrarse debe aceptar nuestras <a href="#">políticas de privacidad</a> <span></span>
 							</label>
 
 						</div>
