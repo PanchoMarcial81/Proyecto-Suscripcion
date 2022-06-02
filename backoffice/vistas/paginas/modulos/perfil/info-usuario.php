@@ -5,10 +5,10 @@
 				<img src="vistas/img/usuarios/default/default.png" alt="" class="profile-user-img img-fluid img-circle">
 			</div>
 			<h3 class="profile-username text-center">
-				Administrador
+				<?php echo $usuario['nombre']; ?>
 			</h3>
 			<p class="text-muted text-center">
-				info@academiaoflife.com
+				<?php echo $usuario['email']; ?>
 			</p>
 			<div class="text-center">
 				<button class="btn btn-primary btn-sm">Cambiar foto</button>

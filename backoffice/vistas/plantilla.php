@@ -1,3 +1,26 @@
+<?php 
+
+session_start();
+
+$ruta = ControladorGeneral::ctrRuta();
+$valorSuscripcion = ControladorGeneral::ctrValor();
+$patrocinador = ControladorGeneral::ctrPatrocinador();
+
+if (!isset($_SESSION['validarSesion'])) {
+	echo '<script>
+		window.location = "'.$ruta.'ingreso";
+	</script>';
+
+	return;
+}
+
+$item = "id_usuario";
+$valor = $_SESSION['id'];
+
+$usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

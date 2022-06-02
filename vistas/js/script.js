@@ -16,7 +16,6 @@ $(window).scroll(function(){
 		$("header").css({"background":"rgba(0,0,0,.1)", "transition":".3s all"})
 
 	}
-
 })
 
 /*=============================================
@@ -103,9 +102,7 @@ if(window.matchMedia("(max-width:768px)").matches){
 			scrollTop: $(vinculo).offset().top - 60
 
 		}, 2000, "easeOutQuint")
-
 	})
-
 
 }else{
 
@@ -120,16 +117,12 @@ if(window.matchMedia("(max-width:768px)").matches){
 			scrollTop: $(vinculo).offset().top - 60
 
 		}, 2000, "easeOutQuint")
-
 	})
-
 }
-
 
 /*=============================================
 SCROLL UP
 =============================================*/
-
 $.scrollUp({
 	scrollText:"",
 	scrollSpeed: 2000,
@@ -159,7 +152,6 @@ $('body').nitePreload({
 			$("body").delay(350).css({"overflow-y":"scroll"})
 
 		}
-	
 	}
 });
 
@@ -197,7 +189,6 @@ $("input[name='registroEmail']").change(function(){
 
 				return;
 			}
-
 		}
 	})
 })
