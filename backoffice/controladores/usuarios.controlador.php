@@ -211,4 +211,105 @@ class ControladorUsuarios{
 		}
 	}
 	
+	/*=============================================
+	CAMBIAR FOTO PERFIL
+	=============================================*/
+	public function ctrCambiarFotoPerfil(){
+
+		if (isset($_POST["idUsuarioFoto"])) {
+
+			$ruta = $_POST["fotoActual"];
+
+			if (isset($_FILES["cambiarImagen"]["tmp_name"]) && !empty($_FILES["cambiarImagen"]["tmp_name"])) {
+
+				list($ancho, $alto) = getimagesize($_FILES["cambiarImagen"]["tmp_name"]);
+				$nuevoAncho = 500;
+				$nuevoAlto = 500;
+
+				/*=============================================
+				CREAR DIRECTORIO PARA GUARDAR LA FOTO
+				=============================================*/
+				$directorio = "vistas/img/usuarios/".$_POST["idUsuarioFoto"];
+
+				/*=============================================
+				VERIFICAR SI EXISTE IMAGEN Y CARPETA
+				=============================================*/
+				if ($ruta != "") {
+
+					unlink($ruta);
+
+				}else{
+					if (!file_exists($directorio)) {
+
+						mkdir($directorio, 0755);
+
+					}
+				}
+
+				/*=============================================
+				APLICAMOS FUNCION POR TIPO DE IMAGEN DE PHP
+				=============================================*/
+				if ($_FILES["cambiarImagen"]["type"] == "image/jpeg") {
+
+					$aleatorio = mt_rand(100, 999);
+					$ruta = $directorio."/".$aleatorio.".jpg";
+					$origen = imagecreatefromjpeg($_FILES["cambiarImagen"]["tmp_name"]);
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+					imagejpeg($destino, $ruta);
+
+				}else if ($_FILES["cambiarImagen"]["type"] == "image/png") {
+
+					$aleatorio = mt_rand(100, 999);
+					$ruta = $directorio."/".$aleatorio.".png";
+					$origen = imagecreatefrompng($_FILES["cambiarImagen"]["tmp_name"]);	
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+					imagealphablending($destino, FALSE);
+					imagesavealpha($destino, TRUE);
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+					imagepng($destino, $ruta);
+
+				}else{
+					echo '<script>
+						swal({
+							type: "error",
+							title: "!CORREGIR!",
+							text: "!No se permiten formatos diferentes a JPG y/o PNG!",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+						}).then(function(result){
+							if(result.value){
+								history.back();
+							}
+						});
+					</script>';
+				}					
+			}
+
+			// Final condicion
+
+			$tabla = "usuarios";
+			$id = $_POST["idUsuarioFoto"];
+			$item = "foto";
+			$valor = $ruta;
+
+			$respuesta = ModeloUsuarios::mdlActualizarUsuarios($tabla, $id, $item, $valor);
+
+			if ($respuesta == "ok") {
+				echo '<script>
+					swal({
+						type: "success",
+						title: "!CORRECTO!",
+						text: "!La foto de perfil ha sido actualizada!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+					}).then(function(result){
+						if(result.value){
+							history.back();
+						}
+					});
+				</script>';
+			}
+		}
+	}
 }

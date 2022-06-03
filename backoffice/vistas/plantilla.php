@@ -99,6 +99,8 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 	<!-- jSignature -->
 	<script src="vistas/js/jSignature.js"></script>
 	<script src="vistas/js/jSignature.CompressorSVG.js"></script>
+	<!-- SweetAlert -->
+	<script src="vistas/js/sweetalert2.all.js"></script>
 
 </head>
 <body class="sidebar-mini sidebar-collapse sidebar-closed" style="height: auto;">
