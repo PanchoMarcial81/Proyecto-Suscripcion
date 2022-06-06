@@ -3,7 +3,7 @@
 		
 		<div class="row">
 			
-			<div class="col-12 col-lg-4">
+			<div class="col-12 col-lg-4 formulario">
 
 				<figure class="p-2 p-sm-5 p-lg-2 p-xl-3 text-center">
 				
