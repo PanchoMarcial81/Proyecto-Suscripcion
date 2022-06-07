@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2022 a las 19:51:22
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 8.1.2
+-- Tiempo de generación: 07-06-2022 a las 19:49:21
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `ventas-suscripcion`
+-- Base de datos: `ventas_suscripcion`
 --
 
 -- --------------------------------------------------------
@@ -56,13 +56,13 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `perfil`, `nombre`, `email`, `password`, `suscripcion`, `id_suscripcion`, `ciclo_pago`, `vencimiento`, `verificacion`, `email_encriptado`, `foto`, `enlace_afiliado`, `patrocinador`, `paypal`, `pais`, `codigo_pais`, `telefono_movil`, `firma`, `fecha_contrato`, `fecha`) VALUES
-(1, 'admin', 'Administrador', 'info@info.cl', '123456', 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'info@info.cl', NULL, NULL, NULL, NULL, NULL, '2022-05-31 16:34:49'),
-(2, 'usuario', 'Francisco', 'fespinoza@servione.cl', '123456', 0, NULL, NULL, NULL, 0, 'bf4fd435ae68e9d14d45d82f0cd62327', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 13:01:53'),
-(3, 'usuario', 'Diego', 'diego@gmail.com', '123654', 0, NULL, NULL, NULL, 0, 'a9c033f9b68a989437c64ca2bd228c5e', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:30:58'),
-(4, 'usuario', 'Jose', 'jose@gmail.com', '123654', 0, NULL, NULL, NULL, 0, 'a9c033f9b68a989437c64ca2bd228c5e', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:21'),
-(5, 'usuario', 'Agustin', 'agustin@gmail.com', '123654', 0, NULL, NULL, NULL, 0, 'e5916fa5b1b85e94dcbeef1c7be70132', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:56'),
-(6, 'usuario', 'Carolina', 'carolina@gmail.com', '123654', 0, NULL, NULL, NULL, 0, '38ad84cbc67a6e587e34df5df5bdb41c', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:38:11'),
-(7, 'usuario', 'Marcia', 'marcia@gmail.com', '123654', 0, NULL, NULL, NULL, 0, '0bb2856c9b52ff282c1ba90c94f9f061', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:40:30');
+(1, 'admin', 'Administrador', 'info@info.cl', '$2a$07$asxx54ahjppf45sd87a5auoHZieF1WP3IvqLF4L7zYOP6FW6t7xwS', 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'info@info.cl', NULL, NULL, NULL, NULL, NULL, '2022-05-31 16:34:49'),
+(2, 'usuario', 'Francisco', 'fespinoza@servione.cl', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'bf4fd435ae68e9d14d45d82f0cd62327', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 13:01:53'),
+(3, 'usuario', 'Diego', 'diego@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'a9c033f9b68a989437c64ca2bd228c5e', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:30:58'),
+(4, 'usuario', 'Jose', 'jose@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'a9c033f9b68a989437c64ca2bd228c5e', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:21'),
+(5, 'usuario', 'Agustin', 'agustin@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'e5916fa5b1b85e94dcbeef1c7be70132', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:56'),
+(6, 'usuario', 'Carolina', 'carolina@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, '38ad84cbc67a6e587e34df5df5bdb41c', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:38:11'),
+(7, 'usuario', 'Marcia', 'marcia@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 1, '0bb2856c9b52ff282c1ba90c94f9f061', 'vistas/img/usuarios/7/268.jpg', NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:40:30');
 
 --
 -- Índices para tablas volcadas
