@@ -28,6 +28,8 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BackOffice | Ventas por suscripcón</title>
 
+	<link rel="icon" href="vistas/img/plantilla/icono.png">
+
 	<!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 	<!-- Font Awesome -->
@@ -41,7 +43,7 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 	<!-- JQVMap -->
 	<link rel="stylesheet" href="vistas/plugins/jqvmap/jqvmap.min.css">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="vistas/css/adminlte.min.css">
+	<link rel="stylesheet" href="vistas/css/plugins/adminlte.min.css">
 	<!-- overlayScrollbars -->
 	<link rel="stylesheet" href="vistas/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 	<!-- Daterange picker -->
@@ -49,12 +51,12 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 	<!-- summernote -->
 	<link rel="stylesheet" href="vistas/plugins/summernote/summernote-bs4.min.css">
 	<!-- jdSlinder -->
-	<link rel="stylesheet" href="vistas/css/jdSlider.css">
+	<link rel="stylesheet" href="vistas/css/plugins/jdSlider.css">
 	<!-- Select2 -->
   	<link rel="stylesheet" href="vistas/plugins/select2/css/select2.min.css">
   	<!-- DataTables -->
-	<link rel="stylesheet" href="vistas/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" href="vistas/css/responsive.bootstrap.min.css">
+	<link rel="stylesheet" href="vistas/css/plugins/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="vistas/css/plugins/responsive.bootstrap.min.css">
 	<!-- CSS Personal -->
 	<link rel="stylesheet" href="vistas/css/style.css">
 
@@ -73,8 +75,8 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 	<!-- Sparkline -->
 	<script src="vistas/plugins/sparklines/sparkline.js"></script>
 	<!-- JQVMap -->
-	<script src="vistas/plugins/jqvmap/jquery.vmap.min.js"></script>
-	<script src="vistas/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+	<!-- <script src="vistas/plugins/jqvmap/jquery.vmap.min.js"></script> -->
+	<!-- <script src="vistas/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
 	<!-- jQuery Knob Chart -->
 	<script src="vistas/plugins/jquery-knob/jquery.knob.min.js"></script>
 	<!-- daterangepicker -->
@@ -90,25 +92,25 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 	<script src="vistas/plugins/moment/moment.min.js"></script>
 	<script src="vistas/plugins/inputmask/jquery.inputmask.min.js"></script>
 	<!-- AdminLTE App -->
-	<script src="vistas/js/adminlte.js"></script>
+	<script src="vistas/js/plugins/adminlte.min.js"></script>
 	<!-- AdminLTE for demo purposes -->
-	<!-- <script src="vistas/js/demo.js"></script> -->
+	<!-- <script src="vistas/js/plugins/demo.js"></script> -->
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="vistas/js/pages/dashboard.js"></script>
 	<!-- jdSlinder -->
-	<script src="vistas/js/jdSlider.js"></script>
+	<script src="vistas/js/plugins/jdSlider.js"></script>
 	<!-- Select2 -->
 	<script src="vistas/plugins/select2/js/select2.full.min.js"></script>
 	<!-- jSignature -->
-	<script src="vistas/js/jSignature.js"></script>
-	<script src="vistas/js/jSignature.CompressorSVG.js"></script>
+	<script src="vistas/js/plugins/jSignature.js"></script>
+	<script src="vistas/js/plugins/jSignature.CompressorSVG.js"></script>
 	<!-- SweetAlert -->
-	<script src="vistas/js/sweetalert2.all.js"></script>
+	<script src="vistas/js/plugins/sweetalert2.all.js"></script>
 	<!-- DataTables http://datatables.net/ -->
-	<script src="vistas/js/jquery.dataTables.min.js"></script>
-	<script src="vistas/js/dataTables.bootstrap4.min.js"></script>
-	<script src="vistas/js/dataTables.responsive.min.js"></script>
-	<script src="vistas/js/responsive.bootstrap.min.js"></script>
+	<script src="vistas/js/plugins/jquery.dataTables.min.js"></script>
+	<script src="vistas/js/plugins/dataTables.bootstrap4.min.js"></script>
+	<script src="vistas/js/plugins/dataTables.responsive.min.js"></script>
+	<script src="vistas/js/plugins/responsive.bootstrap.min.js"></script>
 
 </head>
 <body class="sidebar-mini sidebar-collapse sidebar-closed" style="height: auto;">

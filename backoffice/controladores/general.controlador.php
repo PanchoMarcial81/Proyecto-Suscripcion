@@ -3,7 +3,7 @@
 class ControladorGeneral{
 
 	static public function ctrRuta(){
-		return "http://localhost/Proyecto-Suscripcion/";
+		return "http://academyoflife.com/";
 	}
 
 	static public function ctrValor(){

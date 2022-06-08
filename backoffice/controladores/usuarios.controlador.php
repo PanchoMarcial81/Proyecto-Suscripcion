@@ -221,7 +221,7 @@ class ControladorUsuarios{
 
 		if (isset($_POST["idUsuarioFoto"])) {
 
-			$ruta = $_POST["fotoActual"];
+			$fotoActual = $_POST["fotoActual"];
 
 			if (isset($_FILES["cambiarImagen"]["tmp_name"]) && !empty($_FILES["cambiarImagen"]["tmp_name"])) {
 
@@ -239,7 +239,7 @@ class ControladorUsuarios{
 					 
 					        if(result.value){   
 					            history.back();
-					          } 
+					        } 
 					    });
 					 
 					</script>';
@@ -259,9 +259,9 @@ class ControladorUsuarios{
 				/*=============================================
 				VERIFICAR SI EXISTE IMAGEN Y CARPETA
 				=============================================*/
-				if ($ruta != "") {
+				if ($fotoActual != "") {
 
-					unlink($ruta);
+					unlink($fotoActual);
 
 				}else{
 					if (!file_exists($directorio)) {
@@ -277,22 +277,22 @@ class ControladorUsuarios{
 				if ($_FILES["cambiarImagen"]["type"] == "image/jpeg") {
 
 					$aleatorio = mt_rand(100, 999);
-					$ruta = $directorio."/".$aleatorio.".jpg";
+					$fotoActual = $directorio."/".$aleatorio.".jpg";
 					$origen = imagecreatefromjpeg($_FILES["cambiarImagen"]["tmp_name"]);
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-					imagejpeg($destino, $ruta);
+					imagejpeg($destino, $fotoActual);
 
 				}else if ($_FILES["cambiarImagen"]["type"] == "image/png") {
 
 					$aleatorio = mt_rand(100, 999);
-					$ruta = $directorio."/".$aleatorio.".png";
+					$fotoActual = $directorio."/".$aleatorio.".png";
 					$origen = imagecreatefrompng($_FILES["cambiarImagen"]["tmp_name"]);	
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 					imagealphablending($destino, FALSE);
 					imagesavealpha($destino, TRUE);
 					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-					imagepng($destino, $ruta);
+					imagepng($destino, $fotoActual);
 
 				}else{
 					echo '<script>
@@ -316,7 +316,7 @@ class ControladorUsuarios{
 			$tabla = "usuarios";
 			$id = $_POST["idUsuarioFoto"];
 			$item = "foto";
-			$valor = $ruta;
+			$valor = $fotoActual;
 
 			$respuesta = ModeloUsuarios::mdlActualizarUsuarios($tabla, $id, $item, $valor);
 

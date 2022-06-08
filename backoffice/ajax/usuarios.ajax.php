@@ -18,6 +18,15 @@ class AjaxUsuarios{
 		echo json_encode($respuesta);
 	}
 	
+	/*=============================================
+	SUSCRIPCION CON PAYPAL
+	=============================================*/
+	public $suscripcion;
+
+	public function ajaxSuscripcion(){
+
+		echo "HOLA";
+	}
 }
 
 /*=============================================
@@ -27,4 +36,12 @@ if (isset($_POST['validarEmail'])) {
 	$valEmail = new AjaxUsuarios();
 	$valEmail->validarEmail = $_POST['validarEmail'];
 	$valEmail->ajaxValidarEmail();
+}
+
+/*=============================================
+SUSCRIPCION CON PAYPAL
+=============================================*/
+if (isset($_POST["suscripcion"]) && $_POST["suscripcion"] == "ok") {
+	$paypal = new AjaxUsuarios();
+	$paypal->ajaxSuscripcion();
 }

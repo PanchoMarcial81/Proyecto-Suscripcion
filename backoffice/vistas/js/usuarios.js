@@ -7,7 +7,7 @@ $.ajax({
 	success: function(respuesta){
 		respuesta.forEach(seleccionarPais);
 		function seleccionarPais(item, index){
-			var pais =  item.name_es;
+			var pais =  item.name;
 			var codPais =  item.code;
 			var dial = item.dial_code;
 			$("#inputPais").append(
@@ -80,28 +80,37 @@ $(".suscribirse").click(function(){
 		codigo_pais == "" || 
 		telefono_movil == "" || 
 		red == "" || 
-		aceptarTerminos == "on" ||
-		!$('#signatureparent').jSignature("isModified")) {
+		aceptarTerminos != "on" ||
+		!$("#signatureparent").jSignature('isModified')) {
 
 		$(".suscribirse").before(`
 			<div class="alert alert-danger">Faltan datos, no ha aceptado o no ha firmado los términos y condiciones</div>
 		`);
 
 		return;
+	}else{
+
+		var datos = new FormData();
+		datos.append("suscripcion", "ok");
+
+		$.ajax({
+			url: "ajax/usuarios.ajax.php",
+			method: "POST",
+			data: datos,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success:function(respuesta){
+				console.log("respuesta", respuesta);
+
+			}
+		});
 	}
 })
 
 /*=============================================
 TABLA USUARIOS
 =============================================*/
-$.ajax({
-	url: "ajax/tabla-usuarios.ajax.php",
-	success: function(respuesta){
-		console.log("respuesta", respuesta);
-
-	}
-})
-
 $(".tablaUsuarios").DataTable({
 	"ajax": "ajax/tabla-usuarios.ajax.php",
 	"deferRender": true,
