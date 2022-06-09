@@ -92,6 +92,8 @@ $(".suscribirse").click(function(){
 
 		var datos = new FormData();
 		datos.append("suscripcion", "ok");
+		datos.append("nombre", nombre);
+		datos.append("email", email);
 
 		$.ajax({
 			url: "ajax/usuarios.ajax.php",
@@ -100,8 +102,17 @@ $(".suscribirse").click(function(){
 			cache: false,
 			contentType: false,
 			processData: false,
+			// dataType: "json",
+			beforeSend:function(){
+				$(".suscribirse").after(`
+					<img src="vistas/img/plantilla/status.gif" class="ml-3" style="width:30px; height:30px" />
+					<span class="alert alert-warning ml-3">Procesando la suscripción, no cerrar esta página</span>
+				`)
+			},
 			success:function(respuesta){
-				console.log("respuesta", respuesta);
+				// console.log("respuesta", respuesta);
+
+				window.location = respuesta;
 
 			}
 		});

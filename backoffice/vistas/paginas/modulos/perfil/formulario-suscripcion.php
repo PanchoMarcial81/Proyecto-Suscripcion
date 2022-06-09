@@ -143,3 +143,97 @@
 		</div>
 	</div>
 </div>
+
+<?php 
+if (isset($_GET["subscription_id"])) {
+	
+	/*=============================================
+	CREAR EL ACCESS TOKEN CON LA API DE PAYPAL
+	=============================================*/
+	$curl1 = curl_init();
+
+	curl_setopt_array($curl1, array(
+		CURLOPT_URL => 'https://api-m.sandbox.paypal.com/v1/oauth2/token',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 300,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS => 'grant_type=client_credentials',
+		CURLOPT_HTTPHEADER => array(
+			'Authorization: Basic QVo3Y3BsMUMyRWk2aFd6TVlKelRKNXBUd05aM2RLdExsSmh5SkhqUjV1ZU01d0Y3SlBSVFY5WDN6UUdBU25wUlJBSGFmRW5ORnhDRG9uOUU6RUgtd09NRWFWbnI1R3drZ1lVUEpaTDhrd0RRR1gtbzQ1UmF4NnQ1YnVPOVZVd18wUWNlcVdGVGt3MkYyMlpyMFN6dlNrcU1NVGN4ZDZESTc=',
+			'Content-Type: application/x-www-form-urlencoded'
+		),
+	));
+
+	$response = curl_exec($curl1);
+	$err = curl_error($curl1);
+
+	curl_close($curl1);
+
+	if ($err) {
+		echo "cURL Error #:".$err;
+	}else{
+		$respuesta1 = json_decode($response, true);
+
+		$token = $respuesta1["access_token"];
+
+		/*=============================================
+		VALIDAR EL ESTADO DE LA SUSCRIPCIÓN
+		=============================================*/
+		$curl2 = curl_init();
+
+		curl_setopt_array($curl2, array(
+			CURLOPT_URL => 'https://api-m.sandbox.paypal.com/v1/billing/subscriptions/'.$_GET['subscription_id'],
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 300,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'Content-Type: application/json',
+				'Authorization: Bearer '.$token
+			),
+		));
+
+		$response = curl_exec($curl2);
+		$err = curl_error($curl2);
+
+		curl_close($curl2);
+
+		if ($err) {
+			echo "cURL Error #:".$err;
+		}else{
+			$respuesta2 = json_decode($response, true);
+			echo '<pre>'; print_r($respuesta2); echo '</pre>';
+			
+			/*=============================================
+			APPROVAL_PENDING. La suscripción está creada pero aún no ha sido aprobada por el comprador.
+			APPROVED. El comprador ha aprobado la suscripción.
+			ACTIVE. La suscripción está activa.
+			SUSPENDED. La suscripción está suspendida.
+			CANCELLED. La suscripción está cancelada.
+			EXPIRED. La suscripción ha caducado.
+			=============================================*/
+
+			$estado = $respuesta2["status"];
+
+			if ($estado == "ACTIVE") {
+				
+				$paypal = $respuesta2["subscriber"]["email_address"];
+				$suscripcion = 1;
+				$id_suscripcion = $_GET['subscription_id'];
+				$ciclo_pago = $respuesta2["billing_info"]["cycle_executions"]["cycles_completed"];
+				$vencimiento = $respuesta2["billing_info"]["next_billing_time"];
+
+			}
+
+			
+		}
+	}
+}
+?>
