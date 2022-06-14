@@ -49,6 +49,19 @@ $(".repetirFirma").click(function(){
 });
 
 /*=============================================
+FUNCION PARA GENERAR COOKIES
+=============================================*/
+function crearCookie(nombre, valor, diasExpiracion){
+	var hoy = new Date();
+
+	hoy.setTime(hoy.getTime() + (diasExpiracion*24*60*60*1000));
+
+	var fechaExpiracion = "expires=" + hoy.toUTCString();
+
+	document.cookie = nombre+"="+valor+ "; "+fechaExpiracion;
+}
+
+/*=============================================
 VALIDAR FORMULARIO SUSCRIPCIÓN
 =============================================*/
 $(".suscribirse").click(function(){
@@ -89,6 +102,13 @@ $(".suscribirse").click(function(){
 
 		return;
 	}else{
+		crearCookie("enlace_afiliado", enlace_afiliado, 1);
+		crearCookie("patrocinador", patrocinador, 1);
+		crearCookie("pais", pais, 1);
+		crearCookie("codigo_pais", codigo_pais, 1);
+		crearCookie("telefono_movil", telefono_movil, 1);
+		crearCookie("red", red, 1);
+		crearCookie("firma", firma, 1);
 
 		var datos = new FormData();
 		datos.append("suscripcion", "ok");
@@ -153,3 +173,20 @@ $(".tablaUsuarios").DataTable({
 	    }
    }
 });
+
+/*=============================================
+COPIAR EN EL CLIPBOARD
+=============================================*/
+$(".copiarLink").click(function(){
+	var temporal = $("<input>");
+	$("body").append(temporal);
+	temporal.val($("#linkAfiliado").val()).select();
+	document.execCommand("copy");
+	temporal.remove();
+	$(this).parent().parent().after(`
+		<div class="text-muted copiado">Enlace copiado en el portapapeles</div>
+	`);
+	setTimeout(function(){
+		$(".copiado").remove();
+	},2000)
+})

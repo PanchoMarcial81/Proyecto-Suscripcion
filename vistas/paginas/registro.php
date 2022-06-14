@@ -11,7 +11,17 @@
 
 					<form class="mt-3 px-4" method="POST" onsubmit="return validarPoliticas()">
 
-						<input type="hidden" value="academy-of-life" name="patrocinador">
+						<?php if (isset($_COOKIE['patrocinador'])): ?>
+							
+							<input type="hidden" value="<?php echo $_COOKIE["patrocinador"]; ?>" name="patrocinador">
+
+						<?php else: ?>
+
+							<input type="hidden" value="academy-of-life" name="patrocinador">
+
+						<?php endif ?>
+
+						
 
 						<div class="d-flex justify-content-between">
 						

@@ -1,8 +1,10 @@
+<?php if ($usuario["suscripcion"] == 0): ?>
+	
 <div class="col-12 col-md-8">
 	<div class="card card-primary card-outline">
 		<div class="card-header">
 			<h5 class="m-0 text-uppercase text-secondary">
-				<strong>Suscripción mensual $10</strong>
+				<strong>Suscripción mensual $<?php echo $valorSuscripcion; ?></strong>
 			</h5>
 		</div>
 		<div class="card-body">
@@ -144,6 +146,37 @@
 	</div>
 </div>
 
+<?php else: ?>
+<div class="col-12 col-md-8">
+	<div class="card card-primary card-outline">
+		<div class="card-header">
+			<h5 class="m-0 text-uppercase text-secondary float-left"><b>Suscripción: Activa</b></h5>
+			<span class="m-0 text-secondary float-right">Renovación automática el <?php echo $usuario["vencimiento"]; ?></span>
+		</div>
+		<div class="card-body">
+			<h6 class="pb-2">Comparte tu enlace de afiliado:</h6>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="p-2 bg-info rounded-left copiarLink" style="cursor: pointer;">Copiar</span>
+				</div>
+				<input type="text" class="form-control" id="linkAfiliado" value="<?php echo $ruta.$usuario["enlace_afiliado"]; ?>" readonly>
+			</div>
+			<h6 class="pt-3 pb-2">Cuenta de PayPal donde recibirá los pagos de comisiones:</h6>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<div class="p-2 bg-primary rounded-left"><i class="fab fa-paypal"></i></div>
+				</div>
+				<input type="text" class="form-control" id="correoPaypal" value="<?php echo $usuario["paypal"]; ?>">
+			</div>
+		</div>
+		<div class="card-footer">
+			<a href="#" class="btn btn-dark float-left" target="_blank">DescargarContrato</a>
+			<button class="btn btn-danger float-right cancelarSuscripcion">Cancelar suscripción</button>
+		</div>
+
+	</div>
+</div>
+<?php endif ?>
 <?php 
 if (isset($_GET["subscription_id"])) {
 	
@@ -209,7 +242,6 @@ if (isset($_GET["subscription_id"])) {
 			echo "cURL Error #:".$err;
 		}else{
 			$respuesta2 = json_decode($response, true);
-			echo '<pre>'; print_r($respuesta2); echo '</pre>';
 			
 			/*=============================================
 			APPROVAL_PENDING. La suscripción está creada pero aún no ha sido aprobada por el comprador.
@@ -219,7 +251,6 @@ if (isset($_GET["subscription_id"])) {
 			CANCELLED. La suscripción está cancelada.
 			EXPIRED. La suscripción ha caducado.
 			=============================================*/
-
 			$estado = $respuesta2["status"];
 
 			if ($estado == "ACTIVE") {
@@ -227,12 +258,64 @@ if (isset($_GET["subscription_id"])) {
 				$paypal = $respuesta2["subscriber"]["email_address"];
 				$suscripcion = 1;
 				$id_suscripcion = $_GET['subscription_id'];
-				$ciclo_pago = $respuesta2["billing_info"]["cycle_executions"]["cycles_completed"];
-				$vencimiento = $respuesta2["billing_info"]["next_billing_time"];
+				$ciclo_pago = $respuesta2["billing_info"]["cycle_executions"][0]["cycles_completed"];
+				$vencimiento = substr($respuesta2["billing_info"]["next_billing_time"], 0, -10);
 
+				$enlace_afiliado = $_COOKIE['enlace_afiliado'];
+				$patrocinador = $_COOKIE['patrocinador'];
+				$pais = $_COOKIE['pais'];
+				$codigo_pais = $_COOKIE['codigo_pais'];
+				$telefono_movil = $_COOKIE['telefono_movil'];
+				$firma = $_COOKIE['firma'];
+				$fecha_contrato = substr($respuesta2["start_time"], 0, -10);
+
+				$datos = array(	"id_usuario" => $usuario["id_usuario"],
+				
+								"suscripcion" => $suscripcion,
+							   	"id_suscripcion" => $id_suscripcion,
+							   	"ciclo_pago" => $ciclo_pago,
+						       	"vencimiento" => $vencimiento,
+						   		"enlace_afiliado" => $enlace_afiliado,
+						   		"patrocinador" => $patrocinador,
+						   		"paypal" => $paypal,
+						   		"pais" => $pais,
+						   		"codigo_pais" => $codigo_pais,
+						   		"telefono_movil" => $telefono_movil,
+						   		"firma" => $firma,
+						   		"fecha_contrato" => $fecha_contrato);
+				
+				$iniciarSuscripcion = ControladorUsuarios::ctrIniciarSuscripcion($datos);
+
+				if ($iniciarSuscripcion == "ok") {
+					echo '<script>
+						swal({
+							type: "success",
+							title: "¡La suscripcion se ha hecho correctamente!",
+							text: "¡Bienvenido a nuestro programa de afiliados, ahora puede comenzar a ganar dinero con nosotros, visite nuestro plan de compensación",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+						}).then(function(result){
+							if(result.value){
+								window.location = "'.$ruta.'backoffice/perfil";
+							}
+						});
+					</script>';
+				}
+			}else{
+				echo '<script>
+					swal({
+						type: "error",
+						title: "¡ERROR AL MOMENTO DE ACTIVAR LA SUSCRIPCION!",
+						text: "¡Ocurrio un error al momento de activar la suscripcion, enviar un correo a info@info.com si han hecho algun desembolso de su dinero",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+					}).then(function(result){
+						if(result.value){
+							window.location = "'.$ruta.'backoffice/perfil";
+						}
+					});
+				</script>';
 			}
-
-			
 		}
 	}
 }

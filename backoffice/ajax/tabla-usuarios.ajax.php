@@ -1,11 +1,12 @@
 <?php 
-
+require_once "../controladores/general.controlador.php";
 require_once "../controladores/usuarios.controlador.php";
 require_once "../modelos/usuarios.modelo.php";
 
 class TablaUsuarios{
 	public function mostrarTabla(){
 
+		$ruta = ControladorGeneral::ctrRuta();
 		$item = null;
 		$valor = null;
 		$usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
@@ -48,7 +49,7 @@ class TablaUsuarios{
 		            "'.$suscripcion.'",
 		            "'.$value["id_suscripcion"].'",
 	                "'.$value["ciclo_pago"].'",
-	                "'.$value["enlace_afiliado"].'",
+	                "'.$ruta.$value["enlace_afiliado"].'",
 	                "'.$value["patrocinador"].'",
 	                "'.$value["paypal"].'",
 	                "'.$value["fecha"].'",

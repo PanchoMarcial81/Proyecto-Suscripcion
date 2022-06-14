@@ -104,8 +104,28 @@ if (isset($_GET["pagina"])) {
 		}
 	}
 
-	if ($_GET["pagina"] == "inicio" || $_GET["pagina"] == "ingreso" || $_GET["pagina"] == "registro") {
-		include "paginas/".$_GET["pagina"].".php";
+	/*=============================================
+	ENLACE DE AFILIADO
+	=============================================*/
+	$validarEnlace = ControladorUsuarios::ctrMostrarUsuarios("enlace_afiliado", $_GET["pagina"]);
+
+	if (is_array($validarEnlace)) {
+		if ($validarEnlace["enlace_afiliado"] == $_GET['pagina'] && $validarEnlace["suscripcion"] == 1) {
+
+			setcookie("patrocinador", $validarEnlace["enlace_afiliado"], time() + 604800, "/");
+			include "paginas/inicio.php";
+
+		}elseif ($_GET["pagina"] == "inicio" || $_GET["pagina"] == "ingreso" || $_GET["pagina"] == "registro") {
+			
+			include "paginas/".$_GET["pagina"].".php";
+
+		}else{
+
+			include "paginas/inicio.php";
+
+		}
+	}else{
+		include "paginas/inicio.php";
 	}
 
 }else{
