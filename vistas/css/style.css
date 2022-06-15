@@ -1,7 +1,6 @@
 /*=============================================
 GLOBAL
 =============================================*/
-
 *{
 	font-family: 'Roboto', sans-serif;
 	font-weight:900;
@@ -347,6 +346,14 @@ input[type="checkbox"]:checked + label[for="politicas"] span{
 	border:1px solid #fff;
 }
 
+/*=============================================
+COOKIES
+=============================================*/
+.cookies{
+	position: fixed;
+	bottom:  -5px;
+	display:  none;
+}
 
 
 /*=============================================

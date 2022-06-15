@@ -108,7 +108,7 @@ $(".suscribirse").click(function(){
 		crearCookie("codigo_pais", codigo_pais, 1);
 		crearCookie("telefono_movil", telefono_movil, 1);
 		crearCookie("red", red, 1);
-		crearCookie("firma", firma, 1);
+		crearCookie("firma", firma[1], 1);
 
 		var datos = new FormData();
 		datos.append("suscripcion", "ok");
@@ -190,3 +190,92 @@ $(".copiarLink").click(function(){
 		$(".copiado").remove();
 	},2000)
 })
+
+/*=============================================
+CANCELAR SUSCRIPCION
+=============================================*/
+$(".cancelarSuscripcion").click(function(){
+	var idSuscripcion = $(this).attr("idSuscripcion");
+	var idUsuario = $(this).attr("idUsuario");
+
+	swal({
+		title: '¿Está seguro de cancelar la suscripción?',
+		text: "¡Si no lo está puede camcelar la acción, recuerde que perderá todos el trabajo que ha hecho con la red pero recibirá el pago de su último mes!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Si, cancelar suscripción'
+	}).then(function(result){
+		if(result.value){
+
+			var token = null;
+
+			var settings1 = {
+			  "url": "https://api-m.sandbox.paypal.com/v1/oauth2/token",
+			  "method": "POST",
+			  "timeout": 0,
+			  "headers": {
+			    "Authorization": "Basic QVo3Y3BsMUMyRWk2aFd6TVlKelRKNXBUd05aM2RLdExsSmh5SkhqUjV1ZU01d0Y3SlBSVFY5WDN6UUdBU25wUlJBSGFmRW5ORnhDRG9uOUU6RUgtd09NRWFWbnI1R3drZ1lVUEpaTDhrd0RRR1gtbzQ1UmF4NnQ1YnVPOVZVd18wUWNlcVdGVGt3MkYyMlpyMFN6dlNrcU1NVGN4ZDZESTc=",
+			    "Content-Type": "application/x-www-form-urlencoded"
+			  },
+			  "data": {
+			    "grant_type": "client_credentials"
+			  }
+			};
+
+			$.ajax(settings1).done(function (response) {
+
+			  token = "Bearer "+response["access_token"];
+
+			  var settings2 = {
+				  "url": "https://api-m.sandbox.paypal.com/v1/billing/subscriptions/"+idSuscripcion+"/cancel",
+				  "method": "POST",
+				  "timeout": 0,
+				  "headers": {
+				    "Content-Type": "application/json",
+				    "Authorization": token
+				  },
+				  "data": JSON.stringify({
+				    "reason": "Not satisfied with the service"
+				  }),
+				};
+
+				$.ajax(settings2).done(function (response) {
+				  	if (response = "undefined") {
+
+				  		var datos = new FormData();
+				  		datos.append("idUsuario", idUsuario);
+
+				  		$.ajax({
+				  			url: "ajax/usuarios.ajax.php",
+				  			method: "POST",
+				  			data: datos,
+				  			cache: false,
+				  			contentType: false,
+				  			processData: false,
+				  			success:function(respuesta){
+				  				if (respuesta == "ok") {
+				  					swal({
+				  						type: "success",
+				  						title: "¡Su suscripción ha sido cancelada con éxito!",
+				  						text: "¡Continua disfrutando de nuestro contenido gratuito!",
+				  						showConfirmButton: true,
+				  						confirmButtonText: "Cerrar"
+				  					}).then(function(result){
+				  						if (result.value) {
+				  							window.location = ruta+"backoffice/perfil";
+				  						}
+				  					});
+				  				}
+
+				  			}
+				  		})
+				  	}
+				});
+			});
+		}
+	})
+})
+

@@ -1,7 +1,6 @@
 /*=============================================
 ANIMACIONES SCROLL HEADER
 =============================================*/
-
 $(window).scroll(function(){
 
 	var posY = window.pageYOffset;
@@ -21,7 +20,6 @@ $(window).scroll(function(){
 /*=============================================
 MENÚ MÓVIL
 =============================================*/
-
 $(".logotipo .fa-bars").click(function(){
 
 	$(".menuMovil").show("fast");
@@ -37,7 +35,6 @@ $(".menuMovil ul li .fa-times").click(function(){
 /*=============================================
 CURSOS
 =============================================*/
-
 var videos = $(".cursos video");
 
 $(".cursos video").click(function(){
@@ -56,7 +53,6 @@ $(".cursos video").click(function(){
 /*=============================================
 FAQ
 =============================================*/
-
 var listaPreguntas = $(".faq ul li.nav-item");
 
 $(".faq ul li.nav-item").click(function(){
@@ -214,3 +210,23 @@ function validarPoliticas(){
 	
 	return true;
 }
+
+/*=============================================
+FUNCION PARA GENERAR COOKIES
+=============================================*/
+function crearCookie(nombre, valor, diasExpiracion){
+	var hoy = new Date();
+	hoy.setTime(hoy.getTime() + (diasExpiracion*24*60*60*1000));
+	var fechaExpiracion = "expires=" +hoy.toUTCString();
+	document.cookie = nombre+"="+valor+"; "+fechaExpiracion;
+}
+
+/*=============================================
+COOKIES
+=============================================*/
+$(".cookies").delay(3000).fadeIn(1000);
+
+$(".cookies button").click(function(){
+	crearCookie("ver_cookies", "ok", 1)
+	$(this).parent().hide();
+})

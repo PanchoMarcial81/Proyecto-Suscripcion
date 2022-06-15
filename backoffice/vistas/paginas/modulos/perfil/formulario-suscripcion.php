@@ -170,8 +170,8 @@
 			</div>
 		</div>
 		<div class="card-footer">
-			<a href="#" class="btn btn-dark float-left" target="_blank">DescargarContrato</a>
-			<button class="btn btn-danger float-right cancelarSuscripcion">Cancelar suscripción</button>
+			<a href="<?php echo $ruta; ?>backoffice/extensiones/TCPDF/examples/contrato.php?usuario=<?php echo $usuario["id_usuario"]; ?>" class="btn btn-dark float-left" target="_blank">Descargar Contrato</a>
+			<button class="btn btn-danger float-right cancelarSuscripcion" idUsuario="<?php echo $usuario["id_usuario"]; ?>" idSuscripcion="<?php echo $usuario["id_suscripcion"]; ?>">Cancelar suscripción</button>
 		</div>
 
 	</div>
@@ -269,14 +269,26 @@ if (isset($_GET["subscription_id"])) {
 				$firma = $_COOKIE['firma'];
 				$fecha_contrato = substr($respuesta2["start_time"], 0, -10);
 
+				$validarPatrocinador = ControladorUsuarios::ctrMostrarUsuarios("enlace_afiliado", $enlace_afiliado);
+
+				if (!$validarPatrocinador) {
+					$confimarPatrocinador = $patrocinador;
+				}else{
+					if ($validarPatrocinador["suscripcion"] == 1) {
+						$confimarPatrocinador = $validarPatrocinador["enlace_afiliado"];
+					}else{
+						$confimarPatrocinador = $patrocinador;
+					}
+					
+				}
+
 				$datos = array(	"id_usuario" => $usuario["id_usuario"],
-				
 								"suscripcion" => $suscripcion,
 							   	"id_suscripcion" => $id_suscripcion,
 							   	"ciclo_pago" => $ciclo_pago,
 						       	"vencimiento" => $vencimiento,
 						   		"enlace_afiliado" => $enlace_afiliado,
-						   		"patrocinador" => $patrocinador,
+						   		"patrocinador" => $confimarPatrocinador,
 						   		"paypal" => $paypal,
 						   		"pais" => $pais,
 						   		"codigo_pais" => $codigo_pais,

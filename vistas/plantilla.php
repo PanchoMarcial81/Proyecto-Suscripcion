@@ -115,15 +115,15 @@ if (isset($_GET["pagina"])) {
 			setcookie("patrocinador", $validarEnlace["enlace_afiliado"], time() + 604800, "/");
 			include "paginas/inicio.php";
 
-		}elseif ($_GET["pagina"] == "inicio" || $_GET["pagina"] == "ingreso" || $_GET["pagina"] == "registro") {
-			
-			include "paginas/".$_GET["pagina"].".php";
-
 		}else{
 
 			include "paginas/inicio.php";
 
 		}
+	}elseif ($_GET["pagina"] == "inicio" || $_GET["pagina"] == "ingreso" || $_GET["pagina"] == "registro") {
+			
+			include "paginas/".$_GET["pagina"].".php";
+		
 	}else{
 		include "paginas/inicio.php";
 	}
@@ -133,6 +133,16 @@ if (isset($_GET["pagina"])) {
 }
 	
 ?>
+
+<?php if (!isset($_COOKIE['ver_cookies'])): ?>
+	<div class="jumbotron bg-white w-100 text-center py-4 shadow-lg cookies">
+		<p>Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia al navegar nuestro sitio.
+			<a href="<?php echo $ruta; ?>politicas-de-privacidad.pdf" target="_blank"> Leer más</a>
+		</p>
+		<button class="btn btn-info btn-sm px-5">Ok</button>
+	</div>
+<?php endif ?>
+
 
 <input type="hidden" value="<?php echo $ruta; ?>" id="ruta">
 

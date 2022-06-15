@@ -153,14 +153,42 @@ class ControladorUsuarios{
 
 				$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
 
-				if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $encriptar) {
-					
-					if ($respuesta["verificacion"] == 0) {
+				if (is_array($respuesta)) {
+
+					if ($respuesta["email"] == $_POST["ingresoEmail"] && $respuesta["password"] == $encriptar) {
+						
+						if ($respuesta["verificacion"] == 0) {
+							echo '<script>
+								swal({
+									type: "error",
+									title: "!ERROR!",
+									text: "!El correo electrónico aún no ha sido verificado, por favor revise la bandeja de entreda o la carpeta de SPAM de su correo electrónico para verificar la cuenta, o contáctese con nuestro soporte a info@info.com!",
+									showConfirmButton: true,
+									confirmButtonText: "Cerrar"
+								}).then(function(result){
+									if(result.value){
+										history.back();
+									}
+								});
+							</script>';
+						}else{
+
+							$_SESSION['validarSesion'] = "ok";
+							$_SESSION['id'] = $respuesta['id_usuario'];
+
+							$ruta = ControladorRuta::ctrRuta();
+							echo '
+								<script>
+									window.location = "'.$ruta.'backoffice";
+								</script>
+							';
+						}
+					}else{
 						echo '<script>
 							swal({
 								type: "error",
 								title: "!ERROR!",
-								text: "!El correo electrónico aún no ha sido verificado, por favor revise la bandeja de entreda o la carpeta de SPAM de su correo electrónico para verificar la cuenta, o contáctese con nuestro soporte a info@info.com!",
+								text: "!El email o contraseña no coinciden!",
 								showConfirmButton: true,
 								confirmButtonText: "Cerrar"
 							}).then(function(result){
@@ -169,33 +197,22 @@ class ControladorUsuarios{
 								}
 							});
 						</script>';
-					}else{
-
-						$_SESSION['validarSesion'] = "ok";
-						$_SESSION['id'] = $respuesta['id_usuario'];
-
-						$ruta = ControladorRuta::ctrRuta();
-						echo '
-							<script>
-								window.location = "'.$ruta.'backoffice";
-							</script>
-						';
 					}
 				}else{
-					echo '<script>
-						swal({
-							type: "error",
-							title: "!ERROR!",
-							text: "!El email o contraseña no coinciden!",
-							showConfirmButton: true,
-							confirmButtonText: "Cerrar"
-						}).then(function(result){
-							if(result.value){
-								history.back();
-							}
-						});
-					</script>';
-				}
+						echo '<script>
+							swal({
+								type: "error",
+								title: "!ERROR!",
+								text: "!El email o contraseña no coinciden!",
+								showConfirmButton: true,
+								confirmButtonText: "Cerrar"
+							}).then(function(result){
+								if(result.value){
+									history.back();
+								}
+							});
+						</script>';
+					}
 			}else{
 				echo '<script>
 					swal({
@@ -577,4 +594,23 @@ class ControladorUsuarios{
 
 		return $respuesta;
 	}
+
+	/*=============================================
+	CANCELAR SUSCRIPCION
+	=============================================*/
+	static public function ctrCancelarSuscripcion($valor){
+		$tabla = "usuarios";
+
+		$datos = array(	"id_usuario"=>$valor,
+						"suscripcion"=>0,
+						"ciclo_pago"=>null,
+						"firma"=>null,
+						"fecha_contrato"=>null);
+
+		$respuesta = ModeloUsuarios::mdlCancelarSuscripcion($tabla, $datos);
+
+		return $respuesta;
+	}
+
+	
 }
