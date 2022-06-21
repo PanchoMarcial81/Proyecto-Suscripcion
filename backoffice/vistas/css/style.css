@@ -89,6 +89,7 @@ input[type="checkbox"]:checked + label[for="aceptarTerminos"] span{
 #signatureparent{
 	width:  300px;
 	border-bottom: 2px solid #333;
+<<<<<<< HEAD
 }
 
 /*=============================================
@@ -127,3 +128,6 @@ VIDEOS
 	width: 60px;
 	height: 35px;
 }
+=======
+}
+>>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120

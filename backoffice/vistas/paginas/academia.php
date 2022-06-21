@@ -21,11 +21,15 @@
 
     <div class="container-fluid">
       <?php 
+<<<<<<< HEAD
 
         include "modulos/inicio/vistas-previas.php";
 
         include "modulos/academia/videos.php";
         
+=======
+        include "modulos/inicio/vistas-previas.php";
+>>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
       ?>
     </div>
 

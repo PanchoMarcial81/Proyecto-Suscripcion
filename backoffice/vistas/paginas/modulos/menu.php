@@ -52,10 +52,24 @@
         </a>
       </li>
 
+<<<<<<< HEAD
       <!--=================================
       BOTON USUARIOS
       ==================================-->
       <?php if ($usuario["perfil"] == "admin"): ?>
+=======
+      <?php if ($usuario["perfil"] == "admin"): ?>
+
+        <li class="nav-item">
+          <a href="usuarios" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>Usuarios</p>
+          </a>
+        </li>
+        
+      <?php endif ?>
+      
+>>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
 
         <li class="nav-item">
           <a href="usuarios" class="nav-link">
