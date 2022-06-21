@@ -1,7 +1,6 @@
 /*=============================================
 ANIMACIONES SCROLL HEADER
 =============================================*/
-
 $(window).scroll(function(){
 
 	var posY = window.pageYOffset;
@@ -16,13 +15,11 @@ $(window).scroll(function(){
 		$("header").css({"background":"rgba(0,0,0,.1)", "transition":".3s all"})
 
 	}
-
 })
 
 /*=============================================
 MENÚ MÓVIL
 =============================================*/
-
 $(".logotipo .fa-bars").click(function(){
 
 	$(".menuMovil").show("fast");
@@ -38,7 +35,6 @@ $(".menuMovil ul li .fa-times").click(function(){
 /*=============================================
 CURSOS
 =============================================*/
-
 var videos = $(".cursos video");
 
 $(".cursos video").click(function(){
@@ -57,7 +53,6 @@ $(".cursos video").click(function(){
 /*=============================================
 FAQ
 =============================================*/
-
 var listaPreguntas = $(".faq ul li.nav-item");
 
 $(".faq ul li.nav-item").click(function(){
@@ -103,9 +98,7 @@ if(window.matchMedia("(max-width:768px)").matches){
 			scrollTop: $(vinculo).offset().top - 60
 
 		}, 2000, "easeOutQuint")
-
 	})
-
 
 }else{
 
@@ -120,16 +113,12 @@ if(window.matchMedia("(max-width:768px)").matches){
 			scrollTop: $(vinculo).offset().top - 60
 
 		}, 2000, "easeOutQuint")
-
 	})
-
 }
-
 
 /*=============================================
 SCROLL UP
 =============================================*/
-
 $.scrollUp({
 	scrollText:"",
 	scrollSpeed: 2000,
@@ -159,6 +148,85 @@ $('body').nitePreload({
 			$("body").delay(350).css({"overflow-y":"scroll"})
 
 		}
-	
 	}
 });
+
+/*=============================================
+VALIDAR EMAIL REPETIDO
+=============================================*/
+var ruta = $("#ruta").val();
+
+$("input[name='registroEmail']").change(function(){
+
+	$(".alert").remove();
+
+	var email = $(this).val();
+	
+	var datos = new FormData();
+	datos.append("validarEmail", email);
+
+	$.ajax({
+		url: ruta+"backoffice/ajax/usuarios.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+		success:function(respuesta){
+			if (respuesta) {
+				$("input[name='registroEmail']").val("");
+				$("input[name='registroEmail']").after(`
+					<div class="alert alert-warning">
+						<strong>ERROR:</strong>
+						El correo electrónico ya existe en la base de datos, por favor ingrese otro diferente.
+					</div>	
+				`)
+
+				return;
+			}
+		}
+	})
+})
+
+/*=============================================
+VALIDAR POLITICAS
+=============================================*/
+function validarPoliticas(){
+
+	$(".alert").remove();
+
+	var politicas = $("#politicas:checked").val();
+	if (politicas != "on") {
+		$("#politicas").before(`
+			<div class="alert alert-danger">
+				<strong>ERROR:</strong>
+				Debe aceptar los términos y condiciones.
+			</div>
+		`);
+
+		return false;
+	}
+	
+	return true;
+}
+
+/*=============================================
+FUNCION PARA GENERAR COOKIES
+=============================================*/
+function crearCookie(nombre, valor, diasExpiracion){
+	var hoy = new Date();
+	hoy.setTime(hoy.getTime() + (diasExpiracion*24*60*60*1000));
+	var fechaExpiracion = "expires=" +hoy.toUTCString();
+	document.cookie = nombre+"="+valor+"; "+fechaExpiracion;
+}
+
+/*=============================================
+COOKIES
+=============================================*/
+$(".cookies").delay(3000).fadeIn(1000);
+
+$(".cookies button").click(function(){
+	crearCookie("ver_cookies", "ok", 1)
+	$(this).parent().hide();
+})

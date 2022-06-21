@@ -1,8 +1,10 @@
+<?php if ($usuario["suscripcion"] == 0): ?>
+	
 <div class="col-12 col-md-8">
 	<div class="card card-primary card-outline">
 		<div class="card-header">
 			<h5 class="m-0 text-uppercase text-secondary">
-				<strong>Suscripción mensual $10</strong>
+				<strong>Suscripción mensual $<?php echo $valorSuscripcion; ?></strong>
 			</h5>
 		</div>
 		<div class="card-body">
@@ -13,21 +15,21 @@
 			<div class="form-group">
 				<label for="inputName" class="control-label">Nombre completo</label>
 				<div>
-					<input type="text" class="form-control" id="inputName" value="Administrador" readonly>
+					<input type="text" class="form-control" id="inputName" value="<?php echo $usuario['nombre']; ?>" readonly>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="inputEmail" class="control-label">Correo electrónico</label>
 				<div>
-					<input type="text" class="form-control" id="inputEmail" value="info@academyoflife.com" readonly>
+					<input type="text" class="form-control" id="inputEmail" value="<?php echo $usuario['email']; ?>" readonly>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="inputPatrocinador" class="control-label">Patrocinador</label>
 				<div>
-					<input type="text" class="form-control" id="inputPatrocinador" value="academy-of-life" readonly>
+					<input type="text" class="form-control" id="inputPatrocinador" value="<?php echo $usuario['patrocinador']; ?>" readonly>
 				</div>
 			</div>
 
@@ -38,7 +40,7 @@
 					<div class="input-group-prepend">
 						<span class="p-2 bg-info rounded-left">http://academyoflife.com/</span>
 					</div>
-					<input type="text" class="form-control" id="inputAfiliado" value="academy-of-life" readonly>
+					<input type="text" class="form-control" id="inputAfiliado" value="<?php echo strtolower(str_replace(" ", "-", $usuario['nombre']."-".$usuario['id_usuario'])); ?>" readonly>
 				</div>
 			</div>
 
@@ -143,3 +145,190 @@
 		</div>
 	</div>
 </div>
+
+<?php else: ?>
+<div class="col-12 col-md-8">
+	<div class="card card-primary card-outline">
+		<div class="card-header">
+			<h5 class="m-0 text-uppercase text-secondary float-left"><b>Suscripción: Activa</b></h5>
+			<span class="m-0 text-secondary float-right">Renovación automática el <?php echo $usuario["vencimiento"]; ?></span>
+		</div>
+		<div class="card-body">
+			<h6 class="pb-2">Comparte tu enlace de afiliado:</h6>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="p-2 bg-info rounded-left copiarLink" style="cursor: pointer;">Copiar</span>
+				</div>
+				<input type="text" class="form-control" id="linkAfiliado" value="<?php echo $ruta.$usuario["enlace_afiliado"]; ?>" readonly>
+			</div>
+			<h6 class="pt-3 pb-2">Cuenta de PayPal donde recibirá los pagos de comisiones:</h6>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<div class="p-2 bg-primary rounded-left"><i class="fab fa-paypal"></i></div>
+				</div>
+				<input type="text" class="form-control" id="correoPaypal" value="<?php echo $usuario["paypal"]; ?>">
+			</div>
+		</div>
+		<div class="card-footer">
+			<a href="<?php echo $ruta; ?>backoffice/extensiones/TCPDF/examples/contrato.php?usuario=<?php echo $usuario["id_usuario"]; ?>" class="btn btn-dark float-left" target="_blank">Descargar Contrato</a>
+			<button class="btn btn-danger float-right cancelarSuscripcion" idUsuario="<?php echo $usuario["id_usuario"]; ?>" idSuscripcion="<?php echo $usuario["id_suscripcion"]; ?>">Cancelar suscripción</button>
+		</div>
+
+	</div>
+</div>
+<?php endif ?>
+<?php 
+if (isset($_GET["subscription_id"])) {
+	
+	/*=============================================
+	CREAR EL ACCESS TOKEN CON LA API DE PAYPAL
+	=============================================*/
+	$curl1 = curl_init();
+
+	curl_setopt_array($curl1, array(
+		CURLOPT_URL => 'https://api-m.sandbox.paypal.com/v1/oauth2/token',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 300,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS => 'grant_type=client_credentials',
+		CURLOPT_HTTPHEADER => array(
+			'Authorization: Basic QVo3Y3BsMUMyRWk2aFd6TVlKelRKNXBUd05aM2RLdExsSmh5SkhqUjV1ZU01d0Y3SlBSVFY5WDN6UUdBU25wUlJBSGFmRW5ORnhDRG9uOUU6RUgtd09NRWFWbnI1R3drZ1lVUEpaTDhrd0RRR1gtbzQ1UmF4NnQ1YnVPOVZVd18wUWNlcVdGVGt3MkYyMlpyMFN6dlNrcU1NVGN4ZDZESTc=',
+			'Content-Type: application/x-www-form-urlencoded'
+		),
+	));
+
+	$response = curl_exec($curl1);
+	$err = curl_error($curl1);
+
+	curl_close($curl1);
+
+	if ($err) {
+		echo "cURL Error #:".$err;
+	}else{
+		$respuesta1 = json_decode($response, true);
+
+		$token = $respuesta1["access_token"];
+
+		/*=============================================
+		VALIDAR EL ESTADO DE LA SUSCRIPCIÓN
+		=============================================*/
+		$curl2 = curl_init();
+
+		curl_setopt_array($curl2, array(
+			CURLOPT_URL => 'https://api-m.sandbox.paypal.com/v1/billing/subscriptions/'.$_GET['subscription_id'],
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 300,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'GET',
+			CURLOPT_HTTPHEADER => array(
+				'Content-Type: application/json',
+				'Authorization: Bearer '.$token
+			),
+		));
+
+		$response = curl_exec($curl2);
+		$err = curl_error($curl2);
+
+		curl_close($curl2);
+
+		if ($err) {
+			echo "cURL Error #:".$err;
+		}else{
+			$respuesta2 = json_decode($response, true);
+			
+			/*=============================================
+			APPROVAL_PENDING. La suscripción está creada pero aún no ha sido aprobada por el comprador.
+			APPROVED. El comprador ha aprobado la suscripción.
+			ACTIVE. La suscripción está activa.
+			SUSPENDED. La suscripción está suspendida.
+			CANCELLED. La suscripción está cancelada.
+			EXPIRED. La suscripción ha caducado.
+			=============================================*/
+			$estado = $respuesta2["status"];
+
+			if ($estado == "ACTIVE") {
+				
+				$paypal = $respuesta2["subscriber"]["email_address"];
+				$suscripcion = 1;
+				$id_suscripcion = $_GET['subscription_id'];
+				$ciclo_pago = $respuesta2["billing_info"]["cycle_executions"][0]["cycles_completed"];
+				$vencimiento = substr($respuesta2["billing_info"]["next_billing_time"], 0, -10);
+
+				$enlace_afiliado = $_COOKIE['enlace_afiliado'];
+				$patrocinador = $_COOKIE['patrocinador'];
+				$pais = $_COOKIE['pais'];
+				$codigo_pais = $_COOKIE['codigo_pais'];
+				$telefono_movil = $_COOKIE['telefono_movil'];
+				$firma = $_COOKIE['firma'];
+				$fecha_contrato = substr($respuesta2["start_time"], 0, -10);
+
+				$validarPatrocinador = ControladorUsuarios::ctrMostrarUsuarios("enlace_afiliado", $enlace_afiliado);
+
+				if (!$validarPatrocinador) {
+					$confimarPatrocinador = $patrocinador;
+				}else{
+					if ($validarPatrocinador["suscripcion"] == 1) {
+						$confimarPatrocinador = $validarPatrocinador["enlace_afiliado"];
+					}else{
+						$confimarPatrocinador = $patrocinador;
+					}
+					
+				}
+
+				$datos = array(	"id_usuario" => $usuario["id_usuario"],
+								"suscripcion" => $suscripcion,
+							   	"id_suscripcion" => $id_suscripcion,
+							   	"ciclo_pago" => $ciclo_pago,
+						       	"vencimiento" => $vencimiento,
+						   		"enlace_afiliado" => $enlace_afiliado,
+						   		"patrocinador" => $confimarPatrocinador,
+						   		"paypal" => $paypal,
+						   		"pais" => $pais,
+						   		"codigo_pais" => $codigo_pais,
+						   		"telefono_movil" => $telefono_movil,
+						   		"firma" => $firma,
+						   		"fecha_contrato" => $fecha_contrato);
+				
+				$iniciarSuscripcion = ControladorUsuarios::ctrIniciarSuscripcion($datos);
+
+				if ($iniciarSuscripcion == "ok") {
+					echo '<script>
+						swal({
+							type: "success",
+							title: "¡La suscripcion se ha hecho correctamente!",
+							text: "¡Bienvenido a nuestro programa de afiliados, ahora puede comenzar a ganar dinero con nosotros, visite nuestro plan de compensación",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+						}).then(function(result){
+							if(result.value){
+								window.location = "'.$ruta.'backoffice/perfil";
+							}
+						});
+					</script>';
+				}
+			}else{
+				echo '<script>
+					swal({
+						type: "error",
+						title: "¡ERROR AL MOMENTO DE ACTIVAR LA SUSCRIPCION!",
+						text: "¡Ocurrio un error al momento de activar la suscripcion, enviar un correo a info@info.com si han hecho algun desembolso de su dinero",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+					}).then(function(result){
+						if(result.value){
+							window.location = "'.$ruta.'backoffice/perfil";
+						}
+					});
+				</script>';
+			}
+		}
+	}
+}
+?>

@@ -2,6 +2,6 @@
 
 class ControladorRuta{
 	static public function ctrRuta(){
-		return "http://localhost/Proyecto-Suscripcion/";
+		return "http://academyoflife.com/";
 	}
 }

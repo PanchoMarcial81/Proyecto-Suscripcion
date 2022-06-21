@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 $ruta = ControladorRuta::ctrRuta();
 
 ?>
@@ -54,6 +56,9 @@ $ruta = ControladorRuta::ctrRuta();
 	<!-- https://www.jqueryscript.net/loading/Handle-Loading-Progress-jQuery-Nite-Preloader.html -->
 	<script src="js/plugins/jquery.nite.preloader.js"></script>
 
+	<!-- SWEET ALERT 2 -->
+	<script src="js/plugins/sweetalert2.all.js"></script>
+
 </head>
 
 <body>
@@ -61,14 +66,85 @@ $ruta = ControladorRuta::ctrRuta();
 <?php
 
 if (isset($_GET["pagina"])) {
-	if ($_GET["pagina"] == "inicio" || $_GET["pagina"] == "ingreso" || $_GET["pagina"] == "registro") {
-		include "paginas/".$_GET["pagina"].".php";
+
+	/*=============================================
+	VALIDAR CORREO ELECTRÓNICO
+	=============================================*/
+	$item = "email_encriptado";
+	$valor = $_GET["pagina"];
+
+	$validarCorreo = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+	if (is_array($validarCorreo)) {
+		if ($validarCorreo["email_encriptado"] == $_GET["pagina"]) {
+
+			$id = $validarCorreo["id_usuario"];
+			$item = "verificacion";
+			$valor = 1;
+
+			$respuesta = ControladorUsuarios::ctrActualizarUsuario($id, $item, $valor);
+
+			if ($respuesta == "ok") {
+				echo '<script>
+					swal({
+						type: "success",
+						title: "!CORRECTO!",
+						text: "!Su cuenta ha sido verificada, ya puede ingresar al sistema!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+					}).then(function(result){
+						if(result.value){
+							window.location = "'.$ruta.'ingreso";
+						}
+					});
+				</script>';
+
+				return;
+			}
+		}
 	}
+
+	/*=============================================
+	ENLACE DE AFILIADO
+	=============================================*/
+	$validarEnlace = ControladorUsuarios::ctrMostrarUsuarios("enlace_afiliado", $_GET["pagina"]);
+
+	if (is_array($validarEnlace)) {
+		if ($validarEnlace["enlace_afiliado"] == $_GET['pagina'] && $validarEnlace["suscripcion"] == 1) {
+
+			setcookie("patrocinador", $validarEnlace["enlace_afiliado"], time() + 604800, "/");
+			include "paginas/inicio.php";
+
+		}else{
+
+			include "paginas/inicio.php";
+
+		}
+	}elseif ($_GET["pagina"] == "inicio" || $_GET["pagina"] == "ingreso" || $_GET["pagina"] == "registro") {
+			
+			include "paginas/".$_GET["pagina"].".php";
+		
+	}else{
+		include "paginas/inicio.php";
+	}
+
 }else{
 	include "paginas/inicio.php";
 }
 	
 ?>
+
+<?php if (!isset($_COOKIE['ver_cookies'])): ?>
+	<div class="jumbotron bg-white w-100 text-center py-4 shadow-lg cookies">
+		<p>Este sitio web utiliza cookies para garantizar que obtenga la mejor experiencia al navegar nuestro sitio.
+			<a href="<?php echo $ruta; ?>politicas-de-privacidad.pdf" target="_blank"> Leer más</a>
+		</p>
+		<button class="btn btn-info btn-sm px-5">Ok</button>
+	</div>
+<?php endif ?>
+
+
+<input type="hidden" value="<?php echo $ruta; ?>" id="ruta">
 
 <script src="js/script.js"></script>
 
