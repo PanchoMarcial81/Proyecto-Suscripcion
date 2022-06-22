@@ -22,6 +22,8 @@
     <div class="container-fluid">
       <?php 
         include "modulos/inicio/vistas-previas.php";
+
+        include "modulos/academia/videos.php";
       ?>
     </div>
 

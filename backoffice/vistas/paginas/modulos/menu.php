@@ -30,6 +30,10 @@
   <!-- Sidebar Menu -->
   <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+      <!--=================================
+      BOTON INICIO
+      ==================================-->
       <li class="nav-item">
         <a href="inicio" class="nav-link">
           <i class="nav-icon fas fa-home"></i>
@@ -37,12 +41,20 @@
         </a>
       </li>
 
+
+      <!--=================================
+      BOTON PERFIL
+      ==================================-->
       <li class="nav-item">
         <a href="perfil" class="nav-link">
           <i class="nav-icon fas fa-user"></i>
           <p>Mi perfil</p>
         </a>
       </li>
+
+      <!--=================================
+      BOTON USUARIOS
+      ==================================-->
 
       <?php if ($usuario["perfil"] == "admin"): ?>
 
@@ -51,11 +63,12 @@
             <i class="nav-icon fas fa-users"></i>
             <p>Usuarios</p>
           </a>
-        </li>
-        
+        </li> 
       <?php endif ?>
       
-
+      <!--=================================
+      BOTON ACADEMIA
+      ==================================-->
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-graduation-cap"></i>
@@ -65,27 +78,24 @@
           </p>
         </a>
         <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="cuerpo-activo" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Cuerpo Activo</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="mente-sana" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Mente Sana</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="espiritu-libre" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Espíritu Libre</p>
-            </a>
-          </li>
+        <?php   
+          $categorias = ControladorAcademia::ctrMostrasCategorias(null, null);
+
+          foreach ($categorias as $key => $value) {
+            echo '<li class="nav-item">
+                    <a href="'.$value["ruta_categoria"].'" class="nav-link">
+                      <i class="'.$value["icono_categoria"].' nav-icon"></i>
+                      <p>'.$value["nombre_categoria"].'</p>
+                    </a>
+                  </li>';
+          }
+        ?>
         </ul>
       </li>
 
+      <!--=================================
+      BOTON MI RED
+      ==================================-->
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-sitemap"></i>
@@ -116,6 +126,9 @@
         </ul>
       </li>
 
+      <!--=================================
+      BOTON INGRESOS
+      ==================================-->
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-money-check-alt"></i>
@@ -146,6 +159,9 @@
         </ul>
       </li>
 
+      <!--=================================
+      BOTON PLAN COMPENSACION
+      ==================================-->
       <li class="nav-item">
         <a href="plan-compensacion" class="nav-link">
           <i class="nav-icon fas fa-gem"></i>
@@ -153,6 +169,9 @@
         </a>
       </li>
 
+      <!--=================================
+      BOTON SOPORTE
+      ==================================-->
       <li class="nav-item">
         <a href="soporte" class="nav-link">
           <i class="nav-icon fas fa-comments"></i>
@@ -160,6 +179,9 @@
         </a>
       </li>
 
+      <!--=================================
+      BOTON CIERRE SESION
+      ==================================-->
       <li class="nav-item">
         <a href="salir" class="nav-link">
           <i class="nav-icon fas fa-sign-out-alt"></i>

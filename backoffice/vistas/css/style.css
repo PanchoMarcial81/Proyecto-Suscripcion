@@ -89,4 +89,44 @@ input[type="checkbox"]:checked + label[for="aceptarTerminos"] span{
 #signatureparent{
 	width:  300px;
 	border-bottom: 2px solid #333;
+<<<<<<< HEAD
 }
+
+/*=============================================
+VIDEOS
+=============================================*/
+.videos .visorVideos{
+	position:relative;
+	width:75%;
+	background:black;
+}
+
+.videos .visorVideos video{
+	width:100%;
+	height:100vh;
+}
+
+.videos .visorVideos h5{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, .6);
+	z-index: 1000;
+}
+
+.videos .botonesVideos{
+	width:25%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: white;
+	z-index: 1000;
+	overflow-y:scroll;
+}
+
+.videos .botonesVideos ul li img{
+	width: 60px;
+	height: 35px;
+}
+
+
