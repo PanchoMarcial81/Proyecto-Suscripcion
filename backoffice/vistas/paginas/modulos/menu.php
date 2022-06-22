@@ -52,10 +52,19 @@
         </a>
       </li>
 
+<<<<<<< HEAD
       <!--=================================
       BOTON USUARIOS
       ==================================-->
 
+=======
+<<<<<<< HEAD
+      <!--=================================
+      BOTON USUARIOS
+      ==================================-->
+      <?php if ($usuario["perfil"] == "admin"): ?>
+=======
+>>>>>>> 9133070067fea7f568686fba3bb211463addd42e
       <?php if ($usuario["perfil"] == "admin"): ?>
 
         <li class="nav-item">
@@ -66,6 +75,20 @@
         </li> 
       <?php endif ?>
       
+<<<<<<< HEAD
+=======
+>>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
+
+        <li class="nav-item">
+          <a href="usuarios" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>Usuarios</p>
+          </a>
+        </li>
+        
+      <?php endif ?>
+      
+>>>>>>> 9133070067fea7f568686fba3bb211463addd42e
       <!--=================================
       BOTON ACADEMIA
       ==================================-->
