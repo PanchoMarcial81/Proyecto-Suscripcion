@@ -89,7 +89,6 @@ input[type="checkbox"]:checked + label[for="aceptarTerminos"] span{
 #signatureparent{
 	width:  300px;
 	border-bottom: 2px solid #333;
-<<<<<<< HEAD
 }
 
 /*=============================================
@@ -111,7 +110,7 @@ VIDEOS
 	top: 0;
 	left: 0;
 	background: rgba(0, 0, 0, .6);
-	z-index: 1000;
+	z-index: 100;
 }
 
 .videos .botonesVideos{
@@ -120,7 +119,7 @@ VIDEOS
 	right: 0;
 	top: 0;
 	background: white;
-	z-index: 1000;
+	z-index: 100;
 	overflow-y:scroll;
 }
 
@@ -128,11 +127,3 @@ VIDEOS
 	width: 60px;
 	height: 35px;
 }
-<<<<<<< HEAD
-
-
-=======
-=======
-}
->>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e

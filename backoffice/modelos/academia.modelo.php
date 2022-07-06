@@ -27,4 +27,26 @@ class ModeloAcademia{
 		$stmt = null;
 	}
 	
+	/*=============================================
+	MOSTRAR CATEGORIAS-VIDEOS CON INNER JOIN
+	=============================================*/
+	static public function mdlMostrarAcademia($tabla1, $tabla2, $item, $valor){
+		if ($item != null && $valor != null) {
+			
+			$stmt = Conexion::conectar()->prepare("SELECT $tabla1.*, $tabla2.* FROM $tabla1 INNER JOIN $tabla2 ON $tabla1.id_categoria = $tabla2.id_cat WHERE $item = :$item ");
+			$stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt->execute();
+			return $stmt->fetchAll();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT $tabla1.*, $tabla2.* FROM $tabla1 INNER JOIN $tabla2 ON $tabla1.id_categoria = $tabla2.id_cat ");
+			$stmt->execute();
+			return $stmt->fetchAll();
+
+		}
+
+		$stmt->close();
+		$stmt = null;
+	}
 }

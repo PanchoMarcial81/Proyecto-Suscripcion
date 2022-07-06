@@ -3,15 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
-<<<<<<< HEAD
 -- Tiempo de generación: 21-06-2022 a las 23:38:12
-=======
-<<<<<<< HEAD
 -- Tiempo de generación: 21-06-2022 a las 23:38:12
-=======
 -- Tiempo de generación: 07-06-2022 a las 19:49:21
->>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -32,10 +26,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 -- Estructura de tabla para la tabla `categorias`
 --
 
@@ -61,11 +51,6 @@ INSERT INTO `categorias` (`id_categoria`, `nombre_categoria`, `ruta_categoria`, 
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -100,7 +85,6 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `perfil`, `nombre`, `email`, `password`, `suscripcion`, `id_suscripcion`, `ciclo_pago`, `vencimiento`, `verificacion`, `email_encriptado`, `foto`, `enlace_afiliado`, `patrocinador`, `paypal`, `pais`, `codigo_pais`, `telefono_movil`, `firma`, `fecha_contrato`, `fecha`) VALUES
 (1, 'admin', 'Administrador', 'info@info.cl', '$2a$07$asxx54ahjppf45sd87a5auoHZieF1WP3IvqLF4L7zYOP6FW6t7xwS', 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 'info@info.cl', NULL, NULL, NULL, NULL, NULL, '2022-05-31 16:34:49'),
 (2, 'usuario', 'Francisco', 'fespinoza@servione.cl', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'bf4fd435ae68e9d14d45d82f0cd62327', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 13:01:53'),
-<<<<<<< HEAD
 (3, 'usuario', 'Diego', 'diego@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 1, 'I-7L1BNK5H2NN9', 1, '2022-07-20', 1, 'a9c033f9b68a989437c64ca2bd228c5e', 'vistas/img/usuarios/3/268.jpg', 'diego-3', 'academy-of-life', 'sb-47bcke17018321@personal.example.com', 'Chile', 'CL', '+56 9 6325 8741', '<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"250\" height=\"61\"><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 32 18 c 0.09 0.03 4.21 0.87 5 2 c 1.71 2.47 3 7.2 4 11 c 2.36 8.97 5.83 22.23 6 27 c 0.03 0.88 -4.15 1.71 -5 1 c -2.17 -1.8 -7 -11 -7 -11\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 4 2 c 0.67 0 25.27 -0.48 38 0 c 5.07 0.19 9.98 1.07 15 2 c 4.1 0.76 8.29 1.59 12 3 c 3.09 1.18 6.37 3.03 9 5 c 2.53 1.89 5.1 4.53 7 7 c 1.28 1.67 2.73 4.02 3 6 c 0.64 4.73 0.94 11.49 0 16 c -0.55 2.66 -3.06 5.74 -5 8 c -1.9 2.21 -7 6 -7 6\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 100 20 c 0.05 0.04 2.41 1.17 3 2 c 0.89 1.24 1.84 3.35 2 5 c 0.47 4.9 0.46 10.99 0 16 c -0.18 1.98 -1.64 4.05 -2 6 l 0 5\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 97 8 l 1 1\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 122 24 c 0.02 0.24 0.27 9.45 1 14 c 0.59 3.7 1.35 9.35 3 11 c 1.16 1.16 5.56 0.51 8 0 c 3.56 -0.75 11 -4 11 -4\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 124 26 c 0.18 0 6.8 0.44 10 0 c 3.96 -0.54 8.34 -1.78 12 -3 c 1.07 -0.36 3 -2 3 -2\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 122 12 c 0.26 0 9.92 0.33 15 0 c 10.54 -0.69 31 -3 31 -3\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 171 10 c -0.31 0.24 -13.26 9.06 -18 14 c -2.32 2.42 -4.01 6.82 -5 10 c -0.53 1.71 -0.52 4.32 0 6 c 0.69 2.25 2.24 5.83 4 7 c 2.49 1.66 7.27 2.22 11 3 c 2.64 0.56 5.29 0.89 8 1 c 5.37 0.22 10.84 0.26 16 0 c 1.33 -0.07 3.36 -0.25 4 -1 c 0.98 -1.14 1.67 -4.04 2 -6 c 0.31 -1.86 0.37 -4.33 0 -6 c -0.22 -1 -1.2 -2.2 -2 -3 c -1.1 -1.1 -2.68 -2.56 -4 -3 c -1.32 -0.44 -3.35 -0.18 -5 0 c -4.35 0.48 -8.94 0.8 -13 2 c -4.7 1.39 -9.58 3.57 -14 6 c -5.88 3.22 -17.44 11.12 -17 11 c 1.27 -0.34 54 -21 54 -21\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 190 21 c 0.12 0.18 4.52 7.07 7 10 c 1.02 1.2 2.6 2.3 4 3 c 1.78 0.89 4.05 1.64 6 2 c 1.55 0.28 3.68 0.44 5 0 c 1.32 -0.44 3.58 -1.84 4 -3 c 0.67 -1.85 0.18 -5.33 0 -8 c -0.16 -2.36 -0.3 -4.89 -1 -7 c -0.89 -2.67 -2.51 -5.45 -4 -8 c -0.83 -1.43 -1.87 -3.03 -3 -4 c -1.01 -0.87 -2.65 -1.82 -4 -2 c -5.74 -0.75 -16.21 -2.61 -19 -1 c -1.76 1.02 -0.68 8.23 0 12 c 1.25 6.85 3.69 14.07 6 21 c 1.04 3.12 2.34 6.29 4 9 c 1.92 3.14 4.59 6.35 7 9 c 0.76 0.84 1.96 1.69 3 2 c 2.03 0.61 4.64 0.82 7 1 c 2 0.15 4.18 0.33 6 0 c 1.63 -0.3 3.65 -1.06 5 -2 c 1.77 -1.24 3.64 -3.25 5 -5 c 0.86 -1.11 1.71 -2.7 2 -4 c 0.32 -1.46 0.25 -3.41 0 -5 c -0.4 -2.63 -0.91 -5.67 -2 -8 c -1.44 -3.05 -3.76 -6.39 -6 -9 c -1.62 -1.89 -3.86 -4.1 -6 -5 c -3.66 -1.54 -8.94 -2.57 -13 -3 c -1.85 -0.2 -4.24 0.3 -6 1 c -2.98 1.19 -6.76 2.91 -9 5 c -2.35 2.19 -4.79 6.17 -6 9 c -0.56 1.31 -0.65 3.92 0 5 c 1.01 1.69 3.92 4.75 6 5 c 7.2 0.87 18.32 0.16 27 -1 c 6 -0.8 12.25 -2.84 18 -5 c 4.81 -1.81 14.56 -6.89 14 -7 c -1.04 -0.21 -19.22 2 -29 4 c -40.38 8.24 -85.89 20.69 -118 26 c -2.74 0.45 -9.77 -4.8 -9 -5 c 8.35 -2.17 72.51 -15.05 109 -21 c 8.55 -1.39 26.45 -1.15 26 -1 c -1.03 0.34 -38.5 8.16 -59 12 c -18.3 3.43 -34.5 5.95 -53 9 c -15.33 2.53 -29.1 5.3 -44 7 c -8.7 0.99 -24.58 1.71 -26 1 c -0.79 -0.39 7.7 -6.16 12 -8 c 16.22 -6.95 33.7 -12 51 -19 c 13.23 -5.35 24.82 -11.86 38 -17 c 14.71 -5.74 42.41 -14.39 44 -15 c 0.17 -0.07 -3.39 -0.31 -5 0 c -60.85 11.53 -168.96 32.65 -185 36 l 3 2\"/></svg>', '2022-06-20', '2022-06-01 16:30:58'),
 (4, 'usuario', 'Jose', 'jose@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'a9c033f9b68a989437c64ca2bd228c5e', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:21'),
 (5, 'usuario', 'Agustin', 'agustin@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'e5916fa5b1b85e94dcbeef1c7be70132', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:56'),
@@ -148,8 +132,6 @@ INSERT INTO `videos` (`id_video`, `id_cat`, `titulo_video`, `descripcion_video`,
 (16, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Sed lobortis lacus ac metus condimentum dapibus. Aliquam porta neque vitae felis laoreet, vitae auctor orci lobortis. Vivamus pharetra tellus facilisis diam rhoncus scelerisque. Ut placerat vehicula lacinia. In vitae mi tellus. Fusce sollicitudin accumsan rhoncus.', 'vistas/videos/espiritu-libre/04-video.mp4', 'vistas/img/espiritu-libre/04-imagen.jpg', 0, '2022-06-21 20:51:13'),
 (17, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Sed lobortis lacus ac metus condimentum dapibus. Aliquam porta neque vitae felis laoreet, vitae auctor orci lobortis. Vivamus pharetra tellus facilisis diam rhoncus scelerisque. Ut placerat vehicula lacinia. In vitae mi tellus. Fusce sollicitudin accumsan rhoncus.', 'vistas/videos/espiritu-libre/05-video.mp4', 'vistas/img/espiritu-libre/05-imagen.jpg', 0, '2022-06-21 20:51:16'),
 (18, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Sed lobortis lacus ac metus condimentum dapibus. Aliquam porta neque vitae felis laoreet, vitae auctor orci lobortis. Vivamus pharetra tellus facilisis diam rhoncus scelerisque. Ut placerat vehicula lacinia. In vitae mi tellus. Fusce sollicitudin accumsan rhoncus.', 'vistas/videos/espiritu-libre/06-video.mp4', 'vistas/img/espiritu-libre/06-imagen.jpg', 0, '2022-06-21 20:51:18');
-=======
-<<<<<<< HEAD
 (3, 'usuario', 'Diego', 'diego@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 1, 'I-7L1BNK5H2NN9', 1, '2022-07-20', 1, 'a9c033f9b68a989437c64ca2bd228c5e', 'vistas/img/usuarios/3/268.jpg', 'diego-3', 'academy-of-life', 'sb-47bcke17018321@personal.example.com', 'Chile', 'CL', '+56 9 6325 8741', '<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"250\" height=\"61\"><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 32 18 c 0.09 0.03 4.21 0.87 5 2 c 1.71 2.47 3 7.2 4 11 c 2.36 8.97 5.83 22.23 6 27 c 0.03 0.88 -4.15 1.71 -5 1 c -2.17 -1.8 -7 -11 -7 -11\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 4 2 c 0.67 0 25.27 -0.48 38 0 c 5.07 0.19 9.98 1.07 15 2 c 4.1 0.76 8.29 1.59 12 3 c 3.09 1.18 6.37 3.03 9 5 c 2.53 1.89 5.1 4.53 7 7 c 1.28 1.67 2.73 4.02 3 6 c 0.64 4.73 0.94 11.49 0 16 c -0.55 2.66 -3.06 5.74 -5 8 c -1.9 2.21 -7 6 -7 6\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 100 20 c 0.05 0.04 2.41 1.17 3 2 c 0.89 1.24 1.84 3.35 2 5 c 0.47 4.9 0.46 10.99 0 16 c -0.18 1.98 -1.64 4.05 -2 6 l 0 5\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 97 8 l 1 1\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 122 24 c 0.02 0.24 0.27 9.45 1 14 c 0.59 3.7 1.35 9.35 3 11 c 1.16 1.16 5.56 0.51 8 0 c 3.56 -0.75 11 -4 11 -4\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 124 26 c 0.18 0 6.8 0.44 10 0 c 3.96 -0.54 8.34 -1.78 12 -3 c 1.07 -0.36 3 -2 3 -2\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 122 12 c 0.26 0 9.92 0.33 15 0 c 10.54 -0.69 31 -3 31 -3\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 171 10 c -0.31 0.24 -13.26 9.06 -18 14 c -2.32 2.42 -4.01 6.82 -5 10 c -0.53 1.71 -0.52 4.32 0 6 c 0.69 2.25 2.24 5.83 4 7 c 2.49 1.66 7.27 2.22 11 3 c 2.64 0.56 5.29 0.89 8 1 c 5.37 0.22 10.84 0.26 16 0 c 1.33 -0.07 3.36 -0.25 4 -1 c 0.98 -1.14 1.67 -4.04 2 -6 c 0.31 -1.86 0.37 -4.33 0 -6 c -0.22 -1 -1.2 -2.2 -2 -3 c -1.1 -1.1 -2.68 -2.56 -4 -3 c -1.32 -0.44 -3.35 -0.18 -5 0 c -4.35 0.48 -8.94 0.8 -13 2 c -4.7 1.39 -9.58 3.57 -14 6 c -5.88 3.22 -17.44 11.12 -17 11 c 1.27 -0.34 54 -21 54 -21\"/><path stroke-linejoin=\"round\" stroke-linecap=\"round\" stroke-width=\"1\" stroke=\"#333\" fill=\"none\" d=\"M 190 21 c 0.12 0.18 4.52 7.07 7 10 c 1.02 1.2 2.6 2.3 4 3 c 1.78 0.89 4.05 1.64 6 2 c 1.55 0.28 3.68 0.44 5 0 c 1.32 -0.44 3.58 -1.84 4 -3 c 0.67 -1.85 0.18 -5.33 0 -8 c -0.16 -2.36 -0.3 -4.89 -1 -7 c -0.89 -2.67 -2.51 -5.45 -4 -8 c -0.83 -1.43 -1.87 -3.03 -3 -4 c -1.01 -0.87 -2.65 -1.82 -4 -2 c -5.74 -0.75 -16.21 -2.61 -19 -1 c -1.76 1.02 -0.68 8.23 0 12 c 1.25 6.85 3.69 14.07 6 21 c 1.04 3.12 2.34 6.29 4 9 c 1.92 3.14 4.59 6.35 7 9 c 0.76 0.84 1.96 1.69 3 2 c 2.03 0.61 4.64 0.82 7 1 c 2 0.15 4.18 0.33 6 0 c 1.63 -0.3 3.65 -1.06 5 -2 c 1.77 -1.24 3.64 -3.25 5 -5 c 0.86 -1.11 1.71 -2.7 2 -4 c 0.32 -1.46 0.25 -3.41 0 -5 c -0.4 -2.63 -0.91 -5.67 -2 -8 c -1.44 -3.05 -3.76 -6.39 -6 -9 c -1.62 -1.89 -3.86 -4.1 -6 -5 c -3.66 -1.54 -8.94 -2.57 -13 -3 c -1.85 -0.2 -4.24 0.3 -6 1 c -2.98 1.19 -6.76 2.91 -9 5 c -2.35 2.19 -4.79 6.17 -6 9 c -0.56 1.31 -0.65 3.92 0 5 c 1.01 1.69 3.92 4.75 6 5 c 7.2 0.87 18.32 0.16 27 -1 c 6 -0.8 12.25 -2.84 18 -5 c 4.81 -1.81 14.56 -6.89 14 -7 c -1.04 -0.21 -19.22 2 -29 4 c -40.38 8.24 -85.89 20.69 -118 26 c -2.74 0.45 -9.77 -4.8 -9 -5 c 8.35 -2.17 72.51 -15.05 109 -21 c 8.55 -1.39 26.45 -1.15 26 -1 c -1.03 0.34 -38.5 8.16 -59 12 c -18.3 3.43 -34.5 5.95 -53 9 c -15.33 2.53 -29.1 5.3 -44 7 c -8.7 0.99 -24.58 1.71 -26 1 c -0.79 -0.39 7.7 -6.16 12 -8 c 16.22 -6.95 33.7 -12 51 -19 c 13.23 -5.35 24.82 -11.86 38 -17 c 14.71 -5.74 42.41 -14.39 44 -15 c 0.17 -0.07 -3.39 -0.31 -5 0 c -60.85 11.53 -168.96 32.65 -185 36 l 3 2\"/></svg>', '2022-06-20', '2022-06-01 16:30:58'),
 (4, 'usuario', 'Jose', 'jose@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'a9c033f9b68a989437c64ca2bd228c5e', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:21'),
 (5, 'usuario', 'Agustin', 'agustin@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'e5916fa5b1b85e94dcbeef1c7be70132', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:56'),
@@ -197,71 +179,45 @@ INSERT INTO `videos` (`id_video`, `id_cat`, `titulo_video`, `descripcion_video`,
 (16, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Sed lobortis lacus ac metus condimentum dapibus. Aliquam porta neque vitae felis laoreet, vitae auctor orci lobortis. Vivamus pharetra tellus facilisis diam rhoncus scelerisque. Ut placerat vehicula lacinia. In vitae mi tellus. Fusce sollicitudin accumsan rhoncus.', 'vistas/videos/espiritu-libre/04-video.mp4', 'vistas/img/espiritu-libre/04-imagen.jpg', 0, '2022-06-21 20:51:13'),
 (17, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Sed lobortis lacus ac metus condimentum dapibus. Aliquam porta neque vitae felis laoreet, vitae auctor orci lobortis. Vivamus pharetra tellus facilisis diam rhoncus scelerisque. Ut placerat vehicula lacinia. In vitae mi tellus. Fusce sollicitudin accumsan rhoncus.', 'vistas/videos/espiritu-libre/05-video.mp4', 'vistas/img/espiritu-libre/05-imagen.jpg', 0, '2022-06-21 20:51:16'),
 (18, 3, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'Sed lobortis lacus ac metus condimentum dapibus. Aliquam porta neque vitae felis laoreet, vitae auctor orci lobortis. Vivamus pharetra tellus facilisis diam rhoncus scelerisque. Ut placerat vehicula lacinia. In vitae mi tellus. Fusce sollicitudin accumsan rhoncus.', 'vistas/videos/espiritu-libre/06-video.mp4', 'vistas/img/espiritu-libre/06-imagen.jpg', 0, '2022-06-21 20:51:18');
-=======
 (3, 'usuario', 'Diego', 'diego@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'a9c033f9b68a989437c64ca2bd228c5e', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:30:58'),
 (4, 'usuario', 'Jose', 'jose@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'a9c033f9b68a989437c64ca2bd228c5e', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:21'),
 (5, 'usuario', 'Agustin', 'agustin@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, 'e5916fa5b1b85e94dcbeef1c7be70132', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:35:56'),
 (6, 'usuario', 'Carolina', 'carolina@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 0, '38ad84cbc67a6e587e34df5df5bdb41c', NULL, NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:38:11'),
 (7, 'usuario', 'Marcia', 'marcia@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auFL5K1.Cmt9ZheoVVuudOi5BCi10qWly', 0, NULL, NULL, NULL, 1, '0bb2856c9b52ff282c1ba90c94f9f061', 'vistas/img/usuarios/7/268.jpg', NULL, 'academy-of-life', NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-01 16:40:30');
->>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 
 --
 -- Índices para tablas volcadas
 --
 
 --
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 -- Indices de la tabla `videos`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`id_video`);
 
 --
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
-<<<<<<< HEAD
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -272,7 +228,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `videos`
   MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-=======
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -283,13 +238,10 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `videos`
   MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-=======
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
->>>>>>> e3af7611056899cbdbbca2cc887b3c965130a120
->>>>>>> 9133070067fea7f568686fba3bb211463addd42e
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
