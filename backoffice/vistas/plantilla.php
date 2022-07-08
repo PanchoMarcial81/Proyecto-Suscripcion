@@ -178,5 +178,7 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 
 <script src="vistas/js/inicio.js"></script>
 <script src="vistas/js/usuarios.js"></script>
+<script src="vistas/js/academia.js"></script>
+
 </body>
 </html>

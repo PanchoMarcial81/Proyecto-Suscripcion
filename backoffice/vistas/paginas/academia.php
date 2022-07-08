@@ -20,9 +20,15 @@
   <section class="content">
 
     <div class="container-fluid">
-      <?php 
 
-        include "modulos/inicio/vistas-previas.php";
+      <div class="d-none d-md-block">
+        <?php 
+
+          include "modulos/inicio/vistas-previas.php";
+
+        ?>
+      </div>
+      <?php 
 
         include "modulos/academia/videos.php";
 

@@ -20,4 +20,13 @@ class ControladorAcademia{
 		$respuesta = ModeloAcademia::mdlMostrarAcademia($tabla1, $tabla2, $item, $valor);
 		return $respuesta;
 	}
+
+	/*=============================================
+	MOSTRAR VIDEOS
+	=============================================*/
+	static public function ctrMostrarVideos($item, $valor){
+		$tabla = "videos";
+		$respuesta = ModeloAcademia::mdlMostrarVideos($tabla, $item, $valor);
+		return $respuesta;
+	}
 }

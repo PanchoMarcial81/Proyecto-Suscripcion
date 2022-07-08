@@ -34,7 +34,7 @@ $listaCategorias = array_unique($listaCategorias);
 <div class="card card-<?php echo $coloresCategorias[$key]; ?> card-outline">
   <div class="card-header">
     <h3 class="card-title">
-      <a href="<?php echo $rutaCategorias[$key]; ?>" class="text-muted">
+      <a href="<?php echo $ruta.'backoffice/'.$rutaCategorias[$key]; ?>" class="text-muted">
         <i class="<?php echo $iconosCategorias[$key]; ?> text-<?php echo $coloresCategorias[$key]; ?>"></i> <?php echo $value; ?>
       </a>
     </h3>
@@ -49,59 +49,39 @@ $listaCategorias = array_unique($listaCategorias);
     <div class="jd-slider slideAcademia">
       <div class="slide-inner">
         <ul class="slide-area">
-          <li>
-            <a href="<?php echo $value; ?>">
-              <figure class="px-4 activado">
-                <img src="vistas/img/cuerpo-activo/01-imagen.jpg" alt="">
-              </figure>
-              <h6 class="text-center text-secondary">Lorem ipsum </h6>
-            </a>
-          </li>
 
-          <li>
-            <a href="<?php echo $rutaCategorias[$key]; ?>">
-              <figure class="px-4 activado">
-                <img src="vistas/img/cuerpo-activo/02-imagen.jpg" alt="">
-              </figure>
-              <h6 class="text-center text-secondary">Lorem ipsum </h6>
-            </a>
-          </li>
+        <?php foreach ($academia as $key => $valueAcademia): ?>
+          <?php if ($valueAcademia["nombre_categoria"] == $value): ?>
+            <li>
+              <?php if ($usuario["suscripcion"] == 0 ): ?>
+                <?php if ($valueAcademia["vista_gratuita"] == 1): ?>
+                  <a href="index.php?pagina=<?php echo $rutaCategorias[$key]; ?>&video=<?php echo $valueAcademia["id_video"]; ?>">
+                    <figure class="px-4 activado">
+                      <img src="<?php echo $valueAcademia["imagen_video"]; ?>" alt="">
+                    </figure>
+                    <h6 class="text-center text-secondary" data-toggle="tooltip" title="<?php echo $valueAcademia["descripcion_video"]; ?>"><?php echo $valueAcademia["titulo_video"]; ?></h6>
+                  </a>
+                <?php else: ?>
+                  <a href="perfil">
+                    <figure class="px-4 desactivado">
+                      <img src="<?php echo $valueAcademia["imagen_video"]; ?>" alt="">
+                    </figure>
+                    <h6 class="text-center text-secondary" data-toggle="tooltip" title="<?php echo $valueAcademia["descripcion_video"]; ?>"><?php echo $valueAcademia["titulo_video"]; ?></h6>
+                  </a>
+                <?php endif ?>
+              
+              <?php else: ?>
+                <a href="index.php?pagina=<?php echo $rutaCategorias[$key]; ?>&video=<?php echo $valueAcademia["id_video"]; ?>">
+                  <figure class="px-4 activado">
+                    <img src="<?php echo $valueAcademia["imagen_video"]; ?>" alt="">
+                  </figure>
+                  <h6 class="text-center text-secondary" data-toggle="tooltip" title="<?php echo $valueAcademia["descripcion_video"]; ?>"><?php echo $valueAcademia["titulo_video"]; ?></h6>
+                </a>
+              <?php endif ?>
+            </li>
+          <?php endif ?>
+        <?php endforeach ?>
 
-          <li>
-            <a href="<?php echo $rutaCategorias[$key]; ?>">
-              <figure class="px-4 activado">
-                <img src="vistas/img/cuerpo-activo/03-imagen.jpg" alt="">
-              </figure>
-              <h6 class="text-center text-secondary">Lorem ipsum </h6>
-            </a>
-          </li>
-
-          <li>
-            <a href="perfil">
-              <figure class="px-4 desactivado">
-                <img src="vistas/img/cuerpo-activo/04-imagen.jpg" alt="">
-              </figure>
-              <h6 class="text-center text-secondary">Lorem ipsum </h6>
-            </a>
-          </li>
-
-          <li>
-            <a href="perfil">
-              <figure class="px-4 desactivado">
-                <img src="vistas/img/cuerpo-activo/05-imagen.jpg" alt="">
-              </figure>
-              <h6 class="text-center text-secondary">Lorem ipsum </h6>
-            </a>
-          </li>
-
-          <li>
-            <a href="perfil">
-              <figure class="px-4 desactivado">
-                <img src="vistas/img/cuerpo-activo/06-imagen.jpg" alt="">
-              </figure>
-              <h6 class="text-center text-secondary">Lorem ipsum </h6>
-            </a>
-          </li>
         </ul>
         <a class="prev" href="#" >
           <i class="fas fa-angle-left text-muted"></i>
